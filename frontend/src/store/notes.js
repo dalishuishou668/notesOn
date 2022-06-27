@@ -151,7 +151,7 @@ const notesReducer = (state = initialState, action) => {
                 apple[note.id] = note
             })
             return apple;
-        case ADD_NOTE:  // need debugging for create a note
+        case ADD_NOTE:  
             const newState = {
                 ...state, [action.payload.id]: action.payload
             }

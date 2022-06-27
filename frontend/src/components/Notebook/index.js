@@ -19,8 +19,9 @@ function Notebook() {
     // console.log('component:', notebook.title)
     // line 88
 
-    const notes = useSelector((state) => state.notebooks)
+    const notes = useSelector((state) => state.notes)
     const notesArr = Object.values(notes)
+    console.log("notesArr --------------------", notesArr)
 
 
     // Display and Edit notebook notes
@@ -54,7 +55,7 @@ function Notebook() {
             notebookId
         }
         console.log('create notes bug in component:', payload)
-        await dispatch(createNote(payload)).dispatch(getNotebookNotes(notebookId))
+        await dispatch(createNote(payload))
         setNoteTitle('')
         setContent('')
         // history.push(`/notebooks/${notebookId}`);
@@ -67,6 +68,7 @@ function Notebook() {
 
         await dispatch(deleteNote(noteId))
         setRealNote('')
+        history.push(`/notebooks/${notebookId}`)
     }
 
     // EDIT a note
@@ -80,6 +82,7 @@ function Notebook() {
         };
 
         await dispatch(editSingleNote(payload, noteId))
+        // history.push(`/notebooks/${notebookId}`)
 
     }
 
