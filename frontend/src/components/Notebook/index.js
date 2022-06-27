@@ -9,11 +9,12 @@ function Notebook() {
 
     const { notebookId } = useParams();
 
+
     const dispatch = useDispatch();
     const history = useHistory();
     const userId = useSelector(state => state.session.user?.id);
     const notebook = useSelector((state) => state.notebooks.notebook);
-    console.log('component:', notebook)
+    console.log('notbook bug in component:', notebook)
     // console.log('component:', notebook.title)
     // line 88
 
@@ -36,6 +37,7 @@ function Notebook() {
     // const [inputView, setInputView] = useState(false);
     const updateTitle = (e) => setTitle(e.target.value);
 
+    // Edit A Notebook
     const handleSubmit = (e) => {
         e.preventDefault();
         const payload = {
@@ -55,10 +57,11 @@ function Notebook() {
             userId,
             notebookId
         }
+        console.log('create notes bug in component:', payload)
         dispatch(createNote(payload))
         setNoteTitle('')
         setContent('')
-        history.push(`/notebooks/${notebookId}`);
+        // history.push(`/notebooks/${notebookId}`);
     }
 
     // select a specific note and display it in the form
