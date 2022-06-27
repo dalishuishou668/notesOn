@@ -54,10 +54,10 @@ function Notebook() {
             notebookId
         }
         console.log('create notes bug in component:', payload)
-        dispatch(createNote(payload))
+        await dispatch(createNote(payload)).dispatch(getNotebookNotes(notebookId))
         setNoteTitle('')
         setContent('')
-        history.push(`/notebooks/${notebookId}`);
+        // history.push(`/notebooks/${notebookId}`);
     }
 
 
@@ -84,7 +84,7 @@ function Notebook() {
     }
 
 
-    // Read all notes from a singe notebook
+    // Read all notes from a single notebook
     useEffect(() => {
         // dispatch(getSingleNotebook(notebookId))
         dispatch(getUserNotebooks(userId))
