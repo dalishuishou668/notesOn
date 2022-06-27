@@ -1,5 +1,27 @@
 import { csrfFetch } from "./csrf";
 
+// ------------------- GET ALL NOTES OF A SINGLE NOTEBOOK -----------------
+const LOAD_NOTEBOOK_NOTES = 'notebookNotes/LOAD_NOTEBOOK_NOTES';
+
+const getSingleNotebookNotes = (notebookNotes, notebookId) => {
+
+    return {
+        type: LOAD_NOTEBOOK_NOTES,
+        notebookNotes,
+        notebookId
+    }
+};
+
+
+export const getNotebookNotes = (notebookId) => async (dispatch) => {
+    const res = await fetch(`/api/notebooks/${notebookId}/notes`)
+
+    const notebookNotes = await res.json();
+
+    dispatch(getSingleNotebookNotes(notebookNotes, notebookId))
+
+}
+
 // ------------------- GET A SINGLE NOTE ----------------------
 const GET_SINGLE_NOTE = 'note/GET_SINGLE_NOTE';
 
@@ -10,11 +32,11 @@ const getNote = (note) => {
     }
 }
 
-export const getSingleNote = (noteId) => async(dispatch) => {
+export const getSingleNote = (noteId) => async (dispatch) => {
 
     const res = await fetch(`/api/notes/${noteId}`)
 
-    if(res.ok){
+    if (res.ok) {
         const note = await res.json();
         dispatch(getNote(note));
     }
@@ -26,7 +48,7 @@ const LOAD_ALL_NOTES = 'notebooks/LOAD_ALL_NOTES ';
 
 const loadAllNotes = (notes) => {
     return {
-        type: LOAD_ALL_NOTES ,
+        type: LOAD_ALL_NOTES,
         notes,
     }
 }
@@ -62,7 +84,7 @@ export const createNote = (note) => async (dispatch) => {
         body: JSON.stringify(note),
     })
 
-    if(res.ok) {
+    if (res.ok) {
         const note = await res.json();
         console.log('Create Note Thunk:', note)
         dispatch(addNote(note))
@@ -81,12 +103,12 @@ const removeNote = (noteId) => {
     }
 }
 
-export const deleteNote = (noteId) => async(dispatch) => {
-    const res = await csrfFetch(`/api/notes/${noteId}`,{
+export const deleteNote = (noteId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/notes/${noteId}`, {
         method: 'DELETE'
     })
 
-    if(res.ok) {
+    if (res.ok) {
         const oldNote = await res.json();
         dispatch(removeNote(oldNote))
     }
@@ -97,12 +119,12 @@ const EDIT_NOTE = 'note/EDIT_NOTE';
 
 const editNote = (note) => {
     return {
-        return: EDIT_NOTE,
+        type: EDIT_NOTE,
         payload: note
     }
 }
 
-export const editSingleNote = (payload, noteId) => async(dispatch) => {
+export const editSingleNote = (payload, noteId) => async (dispatch) => {
     const res = await csrfFetch(`/api/notes/${noteId}`, {
         method: 'PUT',
         headers: {
@@ -123,7 +145,7 @@ const initialState = {};
 
 const notesReducer = (state = initialState, action) => {
     switch (action.type) {
-        case LOAD_ALL_NOTES :
+        case LOAD_ALL_NOTES:
             const apple = {}
             action.notes.forEach((note) => {
                 apple[note.id] = note
@@ -135,9 +157,19 @@ const notesReducer = (state = initialState, action) => {
             }
             return newState;
         case GET_SINGLE_NOTE: //////////////////
-            return {...state, note: action.payload}
+            return { ...state, note: action.payload }
         case EDIT_NOTE: // ????????????????????
-            return {...state, [action.payload.id]: action.payload }
+            return { ...state, [action.payload.id]: action.payload }
+        case LOAD_NOTEBOOK_NOTES:
+            // const notes = {
+            //     ...state, notes: action.payload
+            // }
+            // return notes;
+            const banana = {}
+            action.notebookNotes.forEach((notebookNote) => {
+                banana[notebookNote.id] = notebookNote
+            })
+            return banana;
         default:
             return state;
     }

@@ -1,8 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getUserNotebooks, getNotebookNotes, editNotebook, getSingleNotebook } from '../../store/notebooks';
-import { createNote, deleteNote, editSingleNote } from '../../store/notes';
+import { getUserNotebooks, editNotebook} from '../../store/notebooks';
+import { createNote, deleteNote, getNotebookNotes, editSingleNote } from '../../store/notes';
+import './Notebook.css';
 
 
 function Notebook() {
@@ -13,7 +14,7 @@ function Notebook() {
     const dispatch = useDispatch();
     const history = useHistory();
     const userId = useSelector(state => state.session.user?.id);
-    const notebook = useSelector((state) => state.notebooks.notebook);
+    const notebook = useSelector((state) => state?.notebooks[notebookId]);
     console.log('notbook bug in component:', notebook)
     // console.log('component:', notebook.title)
     // line 88
@@ -21,11 +22,6 @@ function Notebook() {
     const notes = useSelector((state) => state.notebooks)
     const notesArr = Object.values(notes)
 
-
-    // // Read all notes from a singe notebook
-    // useEffect(() => {
-    //     dispatch(getNotebookNotes(notebookId))
-    // }, [dispatch, notebookId])
 
     // Display and Edit notebook notes
     const [title, setTitle] = useState('');
@@ -45,14 +41,14 @@ function Notebook() {
         }
 
         dispatch(editNotebook(payload, notebookId))
-        history.push('/home')
+        // history.push('/home')
     }
 
     // Create a new note
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
         const payload = {
-            title,
+            title: noteTitle,
             content,
             userId,
             notebookId
@@ -61,14 +57,8 @@ function Notebook() {
         dispatch(createNote(payload))
         setNoteTitle('')
         setContent('')
-        // history.push(`/notebooks/${notebookId}`);
+        history.push(`/notebooks/${notebookId}`);
     }
-
-    // select a specific note and display it in the form
-    // const theCurrentSelectedNotebook = (e) => {
-    //     setInputView(true);
-    //     setRealNoteTitle(note.title)
-    // }
 
 
     // DELETE a note  ====== not working
@@ -96,18 +86,20 @@ function Notebook() {
 
     // Read all notes from a singe notebook
     useEffect(() => {
-        dispatch(getSingleNotebook(notebookId))
+        // dispatch(getSingleNotebook(notebookId))
+        dispatch(getUserNotebooks(userId))
         dispatch(getNotebookNotes(notebookId))
+
     }, [dispatch, notebookId])
+
 
     if (!notesArr.length) return null;
 
     return (
         <div>
             <h2>hello NotebookPage</h2>
-            {/* <h3>{notebook.title}</h3> */}
+            <h3>{notebook?.title}</h3>
             <div className='editNotebookContainer'>
-                <h3>Notebook title</h3>
                 <form onSubmit={handleSubmit} className='editForm'>
                     <input
                         type='text'
@@ -137,18 +129,11 @@ function Notebook() {
                                         setRealNoteContent(note.content);
                                     }}
                                 >
-                                    {note.title}
+                                    {note?.title}
                                     <div></div>
-                                    {note.content}
+                                    {note?.content}
                                 </div>
                                 <button onClick={(e) => deleteSubmit(e, note.id)}>Delete</button>
-                                {/* <button onSubmit={(e, note.id) => async{
-                                    e.preventDefault()
-
-                                await dispatch(deleteNote(noteId))
-                                }}>
-                                Delete
-                                </button> */}
                             </div>
                         )
                     } else {

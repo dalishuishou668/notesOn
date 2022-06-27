@@ -6,7 +6,7 @@ import { csrfFetch } from "./csrf";
 const LOAD_NOTEBOOKS = 'notebooks/LOAD_NOTEBOOKS'
 
 const loadNotebooks = (notebooks) => {
-    console.log('notebooks in object:', notebooks)
+
     return {
         type: LOAD_NOTEBOOKS,
         notebooks,
@@ -19,7 +19,7 @@ export const getUserNotebooks = (userId) => async (dispatch) => {
 
     if (res.ok) {
         const allnotebooks = await res.json();
-        console.log('notebooks in thunk:', allnotebooks)
+       
         dispatch(loadNotebooks(allnotebooks))
         return res;
     }
@@ -51,28 +51,28 @@ export const getSingleNotebook = (notebookId) => async (dispatch) => {
 
 
 // ------------------- GET ALL NOTES OF A SPECIFIC NOTEBOOK ----------------------
-const LOAD_NOTEBOOK_NOTES = 'notebookNotes/LOAD_NOTEBOOK_NOTES';
+// const LOAD_NOTEBOOK_NOTES = 'notebookNotes/LOAD_NOTEBOOK_NOTES';
 
-const getSingleNotebookNotes = (notebookNotes, notebookId) => {
+// const getSingleNotebookNotes = (notebookNotes, notebookId) => {
 
-    return {
-        type: LOAD_NOTEBOOK_NOTES,
-        notebookNotes,
-        notebookId
-    }
-};
+//     return {
+//         type: LOAD_NOTEBOOK_NOTES,
+//         notebookNotes,
+//         notebookId
+//     }
+// };
 
 
-export const getNotebookNotes = (notebookId) => async (dispatch) => {
-    const res = await fetch(`/api/notebooks/${notebookId}/notes`)
+// export const getNotebookNotes = (notebookId) => async (dispatch) => {
+//     const res = await fetch(`/api/notebooks/${notebookId}/notes`)
 
-    const notebookNotes = await res.json();
-    // console.log('in the thunk:', notebookId)
-    // console.log('in the thunk:', notebookNotes)
+//     const notebookNotes = await res.json();
+//     // console.log('in the thunk:', notebookId)
+//     // console.log('in the thunk:', notebookNotes)
 
-    dispatch(getSingleNotebookNotes(notebookNotes, notebookId))
+//     dispatch(getSingleNotebookNotes(notebookNotes, notebookId))
 
-}
+// }
 
 // export const getNotebookNotes = (notebookId) => async (dispatch) => {
 //     const res = await fetch(`/api/notebooks/${notebookId}`)
@@ -162,16 +162,16 @@ const notebooksReducer = (state = initialState, action) => {
             //     ...state, notebooks: action.payload
             // }
             return newState;
-        case LOAD_NOTEBOOK_NOTES:
-            // const notes = {
-            //     ...state, notes: action.payload
-            // }
-            // return notes;
-            const apple = {}
-            action.notebookNotes.forEach((notebookNote) => {
-                apple[notebookNote.id] = notebookNote
-            })
-            return apple;
+        // case LOAD_NOTEBOOK_NOTES:
+        //     // const notes = {
+        //     //     ...state, notes: action.payload
+        //     // }
+        //     // return notes;
+        //     const apple = {}
+        //     action.notebookNotes.forEach((notebookNote) => {
+        //         apple[notebookNote.id] = notebookNote
+        //     })
+        //     return apple;
         case GET_SINGLE_NOTEBOOK:
             const potato = { ...state, notebook: action.payload }
             console.log("potato:", potato)

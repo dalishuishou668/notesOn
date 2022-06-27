@@ -4,7 +4,8 @@ import { useEffect, useState, useContext } from "react";
 import { getUserNotebooks } from "../../store/notebooks";
 import { getUserNotes } from "../../store/notes";
 import { createNewNotebook } from "../../store/notebooks";
-import MainNotebooks from "./MainNotebooks";
+// import MainNotebooks from "./MainNotebooks";
+import './MainPage.css'
 
 
 
