@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getUserNotebooks, editNotebook} from '../../store/notebooks';
+import { getUserNotebooks, editNotebook } from '../../store/notebooks';
 import { createNote, deleteNote, getNotebookNotes, editSingleNote } from '../../store/notes';
 import './Notebook.css';
 
@@ -116,99 +116,99 @@ function Notebook() {
             </div>
 
 
-
-            <div className='allNotesFromSingleNotebookContainer'>
-                {notesArr && notesArr.map(note => {
-                    if (realNote.id === note.id) {
-                        return (
-                            <div>
-                                <div
-                                    className='selected'
-                                    id={note.id}
-                                    key={note.id}
-                                    onClick={() => {
-                                        setRealNote(note);
-                                        setRealNoteTitle(note.title);
-                                        setRealNoteContent(note.content);
-                                    }}
-                                >
-                                    {note?.title}
-                                    <div></div>
-                                    {note?.content}
+            <div className='notebookContainer'>
+                <div className='allNotesFromSingleNotebookContainer'>
+                    {notesArr && notesArr.map(note => {
+                        if (realNote.id === note.id) {
+                            return (
+                                <div>
+                                    <div
+                                        className='selected'
+                                        id={note.id}
+                                        key={note.id}
+                                        onClick={() => {
+                                            setRealNote(note);
+                                            setRealNoteTitle(note.title);
+                                            setRealNoteContent(note.content);
+                                        }}
+                                    >
+                                        {note?.title}
+                                        <div></div>
+                                        {note?.content}
+                                    </div>
+                                    <button onClick={(e) => deleteSubmit(e, note.id)}>Delete</button>
                                 </div>
-                                <button onClick={(e) => deleteSubmit(e, note.id)}>Delete</button>
-                            </div>
-                        )
-                    } else {
-                        return (
-                            <div>
-                                <div
-                                    className='notSelected'
-                                    id={note.id}
-                                    key={note.id}
-                                    onClick={() => {
-                                        // setInputView(true);
-                                        setRealNote(note)
-                                        setRealNoteTitle(note.title);
-                                        setRealNoteContent(note.content)
-                                    }}
-                                >
-                                    {note.title}
-                                    <div></div>
-                                    {note.content}
+                            )
+                        } else {
+                            return (
+                                <div>
+                                    <div
+                                        className='notSelected'
+                                        id={note.id}
+                                        key={note.id}
+                                        onClick={() => {
+                                            // setInputView(true);
+                                            setRealNote(note)
+                                            setRealNoteTitle(note.title);
+                                            setRealNoteContent(note.content)
+                                        }}
+                                    >
+                                        {note.title}
+                                        <div></div>
+                                        {note.content}
+                                    </div>
+                                    {/* <button onClick={() => deleteSubmit(note.id)}>Delete</button> */}
                                 </div>
-                                {/* <button onClick={() => deleteSubmit(note.id)}>Delete</button> */}
-                            </div>
-                        )
-                    }
+                            )
+                        }
 
-                    // return (
-                    //     <div>
-                    //         <div
-                    //             key={note.id}
-                    //             onClick={() => {
-                    //                 setInputView(true);
-                    //                 setRealNoteTitle(note.title);
-                    //                 setRealNoteContent(note.content)
-                    //             }}
-                    //         >
-                    //             {note.title}
-                    //             <div></div>
-                    //             {note.content}
-                    //         </div>
-                    //         <button onSubmit={deleteSubmit}>Delete</button>
-                    //     </div>
-                    // )
-                })}
+                        // return (
+                        //     <div>
+                        //         <div
+                        //             key={note.id}
+                        //             onClick={() => {
+                        //                 setInputView(true);
+                        //                 setRealNoteTitle(note.title);
+                        //                 setRealNoteContent(note.content)
+                        //             }}
+                        //         >
+                        //             {note.title}
+                        //             <div></div>
+                        //             {note.content}
+                        //         </div>
+                        //         <button onSubmit={deleteSubmit}>Delete</button>
+                        //     </div>
+                        // )
+                    })}
+                </div>
+
+                {/* {inputView && ( */}
+                <div className='realNotesContainer'>
+                    <form className='realNotesDisplayForm'>
+                        <div>
+                            <input
+                                className='realNotesTitle'
+                                type='text'
+                                placeholder='note title'
+                                value={realNoteTitle}
+                                onChange={(e) => setRealNoteTitle(e.target.value)}
+                            >
+                            </input>
+                        </div>
+                        <div>
+                            <input
+                                className='realNotsContent'
+                                type='text'
+                                placeholder='note content'
+                                value={realNoteContent}
+                                onChange={(e) => setRealNoteContent(e.target.value)}
+                            >
+                            </input>
+                        </div>
+                        <button onClick={(e) => editSubmit(e, realNote.id)}>Edit</button>
+                    </form>
+                </div>
             </div>
-
-
-
-
-            {/* {inputView && ( */}
-            <div className='realNotesContainer'>
-                <form>
-                    <input
-                        className='realNotesTitle'
-                        type='text'
-                        placeholder='note title'
-                        value={realNoteTitle}
-                        onChange={(e) => setRealNoteTitle(e.target.value)}
-                    >
-                    </input>
-                    <input
-                        className='realNotsContent'
-                        type='text'
-                        placeholder='note content'
-                        value={realNoteContent}
-                        onChange={(e) => setRealNoteContent(e.target.value)}
-                    >
-                    </input>
-                    <button onClick={(e) => editSubmit(e, realNote.id)}>Edit</button>
-                </form>
-            </div>
-            {/* )} */}
-
 
             <div className='createNoteFormContainer'>
                 <form onSubmit={onSubmit} className='createNote'>

@@ -51,40 +51,48 @@ function MainPage() {
 
     return (
         <div>
-            <h2>Your Notebooks</h2>
-            <div className='notebooksContainer'>
-                <ul>
-                    {notebooksArray && notebooksArray.map((notebook) => (
-                        <li key={notebook.id}>
-                            <NavLink to={`/notebooks/${notebook.id}`}> {notebook.title}</NavLink>
-                        </li>
-                    ))}
-                </ul>
-                 {/* <MainNotebooks notebooksArray={notebooksArray} /> */}
-            </div>
-            <div className='createNotebookForm'>
-
-                <form onSubmit={onSubmit}>
-                    <input
-                    type='text'
-                    placeholder="Title"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    >
-                    </input>
-                    <button type='submit'>Create a Notebook</button>
-                </form>
-            </div>
-            <div className='notesContainer'>
-                <h2>Your Notes</h2>
-                <ul>
-                    {notesArray.map((note) => (
-                        <li key={note.id}>
-                            Title: {note.title}
-                            Content: {note.content}
-                        </li>
-                    ))}
-                </ul>
+            <div className='notebooksAndNotesContainer'>
+                <div className='notebooksContainer'>
+                    <h2>Your Notebooks</h2>
+                    <ul>
+                        {notebooksArray && notebooksArray.map((notebook) => (
+                            <li key={notebook.id} className='singleNotebook'>
+                                <NavLink to={`/notebooks/${notebook.id}`} className='singleNotebook'>
+                                    {notebook.title}
+                                </NavLink>
+                            </li>
+                        ))}
+                    </ul>
+                    {/* <MainNotebooks notebooksArray={notebooksArray} /> */}
+                    <div className='createNotebookForm'>
+                        <form onSubmit={onSubmit} className='createForm'>
+                            <div>
+                                <input
+                                    className='inputForm'
+                                    type='text'
+                                    placeholder="Title"
+                                    value={title}
+                                    onChange={(e) => setTitle(e.target.value)}
+                                >
+                                </input>
+                            </div>
+                            <div>
+                                <button className='createBtn' type='submit'>Create a Notebook</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div className='notesContainer'>
+                    <h2>Your Notes</h2>
+                    <ul>
+                        {notesArray.map((note) => (
+                            <li key={note.id} className='singleNotes'>
+                                Title: {note.title}
+                                Content: {note.content}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
         </div>
     )
