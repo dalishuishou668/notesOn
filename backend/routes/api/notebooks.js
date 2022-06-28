@@ -82,7 +82,7 @@ router.put('/:notebookId', requireAuth, asyncHandler(async (req, res) => {
     const notebook = await Notebook.findByPk(notebookId)
 
     await notebook.update({ title: title })
-    console.log('backend:', notebook)
+    console.log('************backend edit notebook:', notebook)
     return res.json(notebook)
 
 }))
