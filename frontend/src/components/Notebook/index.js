@@ -42,6 +42,7 @@ function Notebook() {
         }
 
         dispatch(editNotebook(payload, notebookId, notebook))
+        dispatch(getUserNotebooks(userId))
         // history.push('/home')
     }
 
