@@ -1,0 +1,14 @@
+.img{
+    height: auto;
+    max-width: 50%;
+    width: auto;
+}
+
+/* .imgContainer{
+
+} */
+
+.landingPageContainer{
+    /* display: flex; */
+    justify-content: center;
+}

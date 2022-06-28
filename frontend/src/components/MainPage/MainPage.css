@@ -1,0 +1,28 @@
+.notebooksAndNotesContainer {
+    display: flex;
+    justify-content: space-evenly;
+    height: 100%;
+}
+
+.singleNotebook{
+    color: #555b6e;
+    margin: 10px
+}
+
+.createBtn{
+    margin-left: 17px;
+    margin-top: 12px;
+    border-radius: 5px;
+}
+
+.inputForm{
+    border-radius: 5px;
+}
+
+.createForm{
+
+}
+
+.singleNotes{
+    margin: 10px;
+}
