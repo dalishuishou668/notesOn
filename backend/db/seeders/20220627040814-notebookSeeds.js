@@ -32,14 +32,26 @@ module.exports = {
           updatedAt: new Date()
         },
         {
+          userId: 1,
+          title: 'Javascript',
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          userId: 1,
+          title: 'Express',
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
           userId: 2,
-          title: 'test A',
+          title: 'test C',
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
           userId: 3,
-          title: 'test B',
+          title: 'test D',
           createdAt: new Date(),
           updatedAt: new Date()
         },

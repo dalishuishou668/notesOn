@@ -62,7 +62,7 @@ module.exports = {
           updatedAt: new Date()
         },
         {
-          userId: 2,
+          userId: 1,
           notebookId: 4,
           title: "Test A",
           content: "test notes A",
@@ -70,10 +70,26 @@ module.exports = {
           updatedAt: new Date()
         },
         {
-          userId: 3,
+          userId: 1,
           notebookId: 5,
           title: "Test B",
           content: "test notes B",
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          userId: 2,
+          notebookId: 6,
+          title: "Test C",
+          content: "test notes C",
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          userId: 3,
+          notebookId: 7,
+          title: "Test D",
+          content: "test notes D",
           createdAt: new Date(),
           updatedAt: new Date()
         },
