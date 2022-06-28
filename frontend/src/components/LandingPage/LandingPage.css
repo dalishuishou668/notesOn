@@ -2,6 +2,7 @@
     height: auto;
     max-width: 50%;
     width: auto;
+    padding:20px
 }
 
 /* .imgContainer{
@@ -9,6 +10,66 @@
 } */
 
 .landingPageContainer{
-    /* display: flex; */
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    align-content: space-between;
+}
+
+
+
+/* .landingPageContainer *{
+    font-family: 'Roboto', sans-serif;
+    margin: 20px;
+    font-size: x-large;
+} */
+
+h1{
+    font-size: 65px;
+    padding: 38px;
+}
+
+.subtitle {
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    padding:20px
+}
+
+.signupBtn{
+    font-family: 'Roboto', sans-serif;
+    font-size: large;
+    background-image: linear-gradient( 109.6deg,  rgba(24,138,141,1) 11.2%, rgba(96,221,142,1) 91.1% );
+    width: 20rem;
+    border: 0;
+    border-radius: .2rem;
+    padding: 13px;
+    margin: 20px;
+    color: white;
+    font-size: 14px;
+}
+
+.link {
+    font-family: 'Roboto', sans-serif;
+    padding: 15px;
+    font-size: large;
+    color: black;
+}
+
+.imgContainer{
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: row;
+    padding: 40px;
+}
+
+.landingText{
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    padding: 25px
+}
+
+p{
+    font-family: 'Roboto', sans-serif;
 }
