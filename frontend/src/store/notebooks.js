@@ -19,7 +19,7 @@ export const getUserNotebooks = (userId) => async (dispatch) => {
 
     if (res.ok) {
         const allnotebooks = await res.json();
-       
+
         dispatch(loadNotebooks(allnotebooks))
         return res;
     }
@@ -136,7 +136,7 @@ export const editNotebook = (payload, notebookId) => async (dispatch) => {
 
     const notebook = await res.json();
     console.log("thunk:", notebook)
-    dispatch(editNotebookTitle(notebook));
+    dispatch(editNotebookTitle(notebook.id));
     return notebook;
 }
 

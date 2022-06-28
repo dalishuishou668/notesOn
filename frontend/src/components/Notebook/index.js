@@ -41,7 +41,7 @@ function Notebook() {
             title,
         }
 
-        dispatch(editNotebook(payload, notebookId))
+        dispatch(editNotebook(payload, notebookId, notebook))
         // history.push('/home')
     }
 
@@ -100,8 +100,8 @@ function Notebook() {
 
     return (
         <div>
-            <h2>hello NotebookPage</h2>
-            <h3>{notebook?.title}</h3>
+            <h2>This is SingleNotebook Page</h2>
+            <h3>Your Notebook: {notebook?.title}</h3>
             <div className='editNotebookContainer'>
                 <form onSubmit={handleSubmit} className='editForm'>
                     <input

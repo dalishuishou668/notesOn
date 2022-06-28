@@ -111,6 +111,7 @@ export const deleteNote = (noteId) => async (dispatch) => {
     if (res.ok) {
         const oldNote = await res.json();
         dispatch(removeNote(oldNote))
+        return oldNote
     }
 }
 
@@ -137,6 +138,7 @@ export const editSingleNote = (payload, noteId) => async (dispatch) => {
 
     console.log('edit thunk:', newNote)
     dispatch(editNote(newNote))
+    return newNote;
 }
 
 
@@ -151,7 +153,7 @@ const notesReducer = (state = initialState, action) => {
                 apple[note.id] = note
             })
             return apple;
-        case ADD_NOTE:  
+        case ADD_NOTE:
             const newState = {
                 ...state, [action.payload.id]: action.payload
             }
@@ -170,6 +172,11 @@ const notesReducer = (state = initialState, action) => {
                 banana[notebookNote.id] = notebookNote
             })
             return banana;
+        case DELETE_NOTE:
+            const test = {...state};
+            console.log("reducer:", action.payload);
+            delete test[action.payload.id];
+            return test;
         default:
             return state;
     }
