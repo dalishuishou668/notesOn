@@ -2,19 +2,19 @@ const { Op } = require("sequelize");
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 const { Notebook, Note } = require("../../db/models");
-const {requireAuth} = require('../../utils/auth')
+const { requireAuth } = require('../../utils/auth')
 const router = express.Router();
 
 
 
 //GET all notes of a specific notebook
 router.get('/:notebookId/notes', asyncHandler(async (req, res) => {
-    const {notebookId} = req.params;
+    const { notebookId } = req.params;
 
     const notebookNotes = await Note.findAll({
         where: {
             notebookId: {
-                [Op.eq]:notebookId
+                [Op.eq]: notebookId
             }
         }
     })
@@ -24,7 +24,7 @@ router.get('/:notebookId/notes', asyncHandler(async (req, res) => {
 
 // GET A SINGLE NOTEBOOK
 router.get('/:notebookId', asyncHandler(async (req, res) => {
-    const {notebookId} = req.params;
+    const { notebookId } = req.params;
 
     const notebook = await Notebook.findByPk(notebookId)
 
@@ -53,24 +53,15 @@ router.post('/', requireAuth, asyncHandler(async (req, res) => {
 
 
 // DELETE a specfiic notebook
+router.delete('/:notebookId', requireAuth, asyncHandler(async (req, res) => {
+    const { notebookId } = req.params;
+    const notebook = await Notebook.findByPk(notebookId);
+    await notebook.destroy();
+    console.log('%%%%%%backend:', notebook)
+    return res.json(notebook)
 
-// router.delete('/:notebookId', requireAuth, asyncHandler(async (req, res) => {
-//     const { notebookId } = req.params;
+}))
 
-//     const notebook = await Notebook.findByPk(notebookId);
-
-//     const notes = await Note.findAll({
-//         where:{
-//             notebookId: {
-//                 [Op.eq]:notebookId
-//             }
-//         }
-//     })
-
-//     await notes.destroy();
-//     await notebook.destroy();
-
-// }))
 
 
 //Edit a specific notebook

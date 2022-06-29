@@ -38,7 +38,7 @@ router.post('/', requireAuth, asyncHandler(async (req, res) => {
 
 
 // Delete a specific note
-router.delete('/:noteId', asyncHandler(async (req, res) => {
+router.delete('/:noteId', requireAuth, asyncHandler(async (req, res) => {
     const { noteId } = req.params;
     const note = await Note.findByPk(noteId);
     await note.destroy();
@@ -48,7 +48,7 @@ router.delete('/:noteId', asyncHandler(async (req, res) => {
 
 
 // Edit a specific note
-router.put('/:noteId', asyncHandler(async (req, res) => {
+router.put('/:noteId', requireAuth, asyncHandler(async (req, res) => {
     const { noteId } = req.params;
 
     const oldnote = await Note.findByPk(noteId);

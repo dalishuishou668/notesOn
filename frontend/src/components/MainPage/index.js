@@ -17,14 +17,12 @@ function MainPage() {
 
     // Get all notebooks
     const notebooks = useSelector(state => state?.notebooks);
-    console.log('notebooks--------:', notebooks)
     const notebooksArray = Object.values(notebooks)
 
     // Get all notes
     const notes = useSelector(state => state.notes)
-    console.log('notes in component:', notes)
     const notesArray = Object.values(notes)
-    console.log('notesArray:', notesArray)
+   
 
     useEffect(() => {
         dispatch(getUserNotebooks(userId));
@@ -36,6 +34,13 @@ function MainPage() {
 
     const [errors, setErrors] = useState([])
     const [title, setTitle] = useState('')
+
+    useEffect(() => {
+        const errors = [];
+        if (title.length < 1) errors.push('Please provide valid values');
+        if (title.length > 25) errors.push('Character limit reached');
+        setErrors(errors);
+    }, [title])
 
 
     const onSubmit = e => {
@@ -71,6 +76,13 @@ function MainPage() {
                     <div className='createNotebookForm'>
                         <form onSubmit={onSubmit} className='createForm'>
                             <div>
+                                <ul className="errors">
+                                    {errors.map(error => (
+                                        <li key={error}>{error}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div>
                                 <input
                                     className='createNotebookInput'
                                     type='text'
@@ -81,7 +93,7 @@ function MainPage() {
                                 </input>
                             </div>
                             <div>
-                                <button className='createBtn' type='submit'>Create a Notebook</button>
+                                <button className='createBtn' type='submit' disabled={!!errors.length}>Create a Notebook</button>
                             </div>
                         </form>
                     </div>
@@ -90,13 +102,20 @@ function MainPage() {
                 <div className='notesContainer'>
                     <ul>
                         {notesArray.map((note) => (
-                            <li key={note.id} className='singleNotes'>
-                                <div className='notetitle'>
-                                    <h2>{note.title}</h2>
-                                </div>
-                                <div className='notecontent'>
-                                    <h3>{note.content}</h3>
-                                </div>
+                            <li key={note.id}>
+                                <NavLink
+                                    className='singleNotes'
+                                    to={`/notebooks/${note.notebookId}`}
+                                    // key={note.id}
+                                >
+                                    <div className='notetitle'>
+                                        <h3>{note.title}</h3>
+                                    </div>
+                                    <div className='notecontent'>
+                                        <p>{note.content}</p>
+                                    </div>
+
+                                </NavLink>
                             </li>
                         ))}
                     </ul>

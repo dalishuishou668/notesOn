@@ -118,7 +118,7 @@ export const createNewNotebook = (newNotebook) => async (dispatch) => {
 const EDIT_NOTEBOOK = 'notebooks/EDIT_NOTEBOOK'
 
 export const editNotebookTitle = (notebook) => {
-    console.log('EDIT object:', notebook)
+
     return {
         type: EDIT_NOTEBOOK,
         payload: notebook
@@ -135,10 +135,31 @@ export const editNotebook = (payload, notebookId) => async (dispatch) => {
     })
 
     const notebook = await res.json();
-    console.log("*********edit notebook thunk:", notebook)
     dispatch(editNotebookTitle(notebook));
     return notebook;
 }
+
+// ----------------- DELETE A Notebook -------------------------
+
+const DELETE_NOTEBOOK = "notebooks/DELETE_NOTEBOOK";
+
+const removeNotebook = (notebookId) => ({
+  type: DELETE_NOTEBOOK,
+  payload: notebookId
+});
+
+export const deleteNotebook = (notebookId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/notebooks/${notebookId}`, {
+      method: "DELETE",
+    });
+
+    console.log('delete notebook thunk:', res)
+    if (res.ok) {
+      const oldNotebook = await res.json();
+      dispatch(removeNotebook(oldNotebook.id));
+      return oldNotebook;
+    }
+  };
 
 
 
@@ -158,9 +179,6 @@ const notebooksReducer = (state = initialState, action) => {
             const newState = {
                 ...state, [action.payload.id]: action.payload
             }
-            // const newState = {
-            //     ...state, notebooks: action.payload
-            // }
             return newState;
         // case LOAD_NOTEBOOK_NOTES:
         //     // const notes = {
@@ -174,13 +192,16 @@ const notebooksReducer = (state = initialState, action) => {
         //     return apple;
         case EDIT_NOTEBOOK:
             // const tomato = {...state, notebook: action.payload};
-            console.log('reducer:', action.payload)
             const tomato = {...state, [action.payload.id]: action.payload};
             return tomato;
         case GET_SINGLE_NOTEBOOK:
             const potato = { ...state, notebook: action.payload }
-            console.log("potato:", potato)
             return potato
+        case DELETE_NOTEBOOK:
+            const test1 = {...state}
+            console.log("@@@@@@@@reducer:", action.payload);
+            delete test1[action.payload.id]
+            return test1;
         default:
             return state;
     }
