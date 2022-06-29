@@ -43,6 +43,7 @@ function Notebook() {
 
         dispatch(editNotebook(payload, notebookId, notebook))
         dispatch(getUserNotebooks(userId))
+        setTitle('')
         // history.push('/home')
     }
 
@@ -69,6 +70,8 @@ function Notebook() {
 
         await dispatch(deleteNote(noteId))
         setRealNote('')
+        setRealNoteTitle('')
+        setRealNoteContent('')
         history.push(`/notebooks/${notebookId}`)
     }
 
@@ -83,6 +86,9 @@ function Notebook() {
         };
 
         await dispatch(editSingleNote(payload, noteId))
+        setRealNote('')
+        setRealNoteTitle('')
+        setRealNoteContent('')
         // history.push(`/notebooks/${notebookId}`)
 
     }
@@ -101,7 +107,7 @@ function Notebook() {
 
     return (
         <div>
-            <h2>Take notes anywhere, any time & in any device !</h2>
+            <h2>Take notes anywhere, any time in any device !</h2>
             <div>
                 <h3>Your Notebook: {notebook?.title}</h3>
                 <div className='editNotebookContainer'>
