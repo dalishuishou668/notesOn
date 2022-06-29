@@ -9,15 +9,13 @@ import './Notebook.css';
 function Notebook() {
 
     const { notebookId } = useParams();
-
-
     const dispatch = useDispatch();
     const history = useHistory();
+
+    // State
     const userId = useSelector(state => state.session.user?.id);
     const notebook = useSelector((state) => state?.notebooks[notebookId]);
-    console.log('notbook bug in component:', notebook)
-    // console.log('component:', notebook.title)
-    // line 88
+    console.log('********notbook bug in component:', notebook)
 
     const notes = useSelector((state) => state.notes)
     const notesArr = Object.values(notes)
@@ -43,6 +41,7 @@ function Notebook() {
 
         dispatch(editNotebook(payload, notebookId, notebook))
         dispatch(getUserNotebooks(userId))
+        setTitle('')
         // history.push('/home')
     }
 
@@ -69,6 +68,8 @@ function Notebook() {
 
         await dispatch(deleteNote(noteId))
         setRealNote('')
+        setRealNoteTitle('')
+        setRealNoteContent('')
         history.push(`/notebooks/${notebookId}`)
     }
 
@@ -83,6 +84,9 @@ function Notebook() {
         };
 
         await dispatch(editSingleNote(payload, noteId))
+        setRealNote('')
+        setRealNoteTitle('')
+        setRealNoteContent('')
         // history.push(`/notebooks/${notebookId}`)
 
     }
@@ -101,7 +105,7 @@ function Notebook() {
 
     return (
         <div>
-            <h2>Take notes anywhere, any time & in any device !</h2>
+            <h2>Take notes anywhere, any time in any device !</h2>
             <div>
                 <h3>Your Notebook: {notebook?.title}</h3>
                 <div className='editNotebookContainer'>
