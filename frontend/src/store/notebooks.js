@@ -118,7 +118,7 @@ export const createNewNotebook = (newNotebook) => async (dispatch) => {
 const EDIT_NOTEBOOK = 'notebooks/EDIT_NOTEBOOK'
 
 export const editNotebookTitle = (notebook) => {
-    console.log('EDIT object:', notebook)
+
     return {
         type: EDIT_NOTEBOOK,
         payload: notebook
@@ -135,7 +135,6 @@ export const editNotebook = (payload, notebookId) => async (dispatch) => {
     })
 
     const notebook = await res.json();
-    console.log("*********edit notebook thunk:", notebook)
     dispatch(editNotebookTitle(notebook));
     return notebook;
 }
@@ -174,12 +173,10 @@ const notebooksReducer = (state = initialState, action) => {
         //     return apple;
         case EDIT_NOTEBOOK:
             // const tomato = {...state, notebook: action.payload};
-            console.log('reducer:', action.payload)
             const tomato = {...state, [action.payload.id]: action.payload};
             return tomato;
         case GET_SINGLE_NOTEBOOK:
             const potato = { ...state, notebook: action.payload }
-            console.log("potato:", potato)
             return potato
         default:
             return state;

@@ -29,6 +29,7 @@ function Notebook() {
     const [realNote, setRealNote] = useState('');
     const [realNoteTitle, setRealNoteTitle] = useState('');
     const [realNoteContent, setRealNoteContent] = useState('');
+
     // const [inputView, setInputView] = useState(false);
     const updateTitle = (e) => setTitle(e.target.value);
 
@@ -101,7 +102,39 @@ function Notebook() {
     }, [dispatch, notebookId])
 
 
-    if (!notesArr.length) return null;
+    // ERROR HANDLING for edit notebook title
+    const [errors1, setErrors1] = useState([]);
+
+    useEffect(() => {
+        const errors1 = [];
+        if (title.length < 1) errors1.push('Please provide valid notebook title');
+        setErrors1(errors1);
+    }, [title])
+
+    // ERROR HANDLING for edit notebook real note title and content
+    const [errors2, setErrors2] = useState([]);
+
+    useEffect(() => {
+        const errors2 = [];
+        if (realNoteTitle.length < 1) errors2.push('Please provide valid values');
+        if (realNoteContent.length < 1) errors2.push('Please provide valid values');
+        setErrors2(errors2);
+    }, [realNoteTitle, realNoteContent])
+
+    // ERROR HANDLING for create new note
+    const [errors3, setErrors3] = useState([]);
+
+    useEffect(() => {
+        const errors3 = [];
+        if (noteTitle.length < 1) errors3.push('Please provide valid note title');
+        if (content.length < 1) errors3.push('Please provide valid note content');
+        setErrors3(errors3);
+    }, [noteTitle, content])
+
+
+
+
+    // if (!notesArr.length) return null;
 
     return (
         <div>
@@ -110,6 +143,13 @@ function Notebook() {
                 <h3>Your Notebook: {notebook?.title}</h3>
                 <div className='editNotebookContainer'>
                     <form onSubmit={handleSubmit} className='editForm'>
+                        <div>
+                            <ul className="errors">
+                                {errors1.map(error => (
+                                    <li key={error}>{error}</li>
+                                ))}
+                            </ul>
+                        </div>
                         <input
                             className='editNotebookTitleInput'
                             type='text'
@@ -194,6 +234,13 @@ function Notebook() {
                 {/* {inputView && ( */}
                 <div className='realNotesContainer'>
                     <form className='realNotesDisplayForm'>
+                        <div>
+                            <ul className="errors">
+                                {errors2.map(error => (
+                                    <li key={error}>{error}</li>
+                                ))}
+                            </ul>
+                        </div>
                         <div className='inputTitle'>
                             <input
                                 className='realNotesTitle'
@@ -221,10 +268,17 @@ function Notebook() {
 
             <div className='createNoteFormContainer'>
                 <form onSubmit={onSubmit} className='createNote'>
+                    <div>
+                        <ul className="errors">
+                            {errors3.map(error => (
+                                <li key={error}>{error}</li>
+                            ))}
+                        </ul>
+                    </div>
                     <input
                         className='createTitleInput'
                         type='text'
-                        placeholder='title'
+                        placeholder=' note title'
                         value={noteTitle}
                         onChange={(e) => setNoteTitle(e.target.value)}
                     >

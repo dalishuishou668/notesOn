@@ -37,6 +37,12 @@ function MainPage() {
     const [errors, setErrors] = useState([])
     const [title, setTitle] = useState('')
 
+    useEffect(() => {
+        const errors = [];
+        if (title.length < 1) errors.push('Please provide valid values');
+        setErrors(errors);
+    }, [title])
+
 
     const onSubmit = e => {
         e.preventDefault();
@@ -70,6 +76,13 @@ function MainPage() {
                     {/* <MainNotebooks notebooksArray={notebooksArray} /> */}
                     <div className='createNotebookForm'>
                         <form onSubmit={onSubmit} className='createForm'>
+                            <div>
+                                <ul className="errors">
+                                    {errors.map(error => (
+                                        <li key={error}>{error}</li>
+                                    ))}
+                                </ul>
+                            </div>
                             <div>
                                 <input
                                     className='createNotebookInput'
