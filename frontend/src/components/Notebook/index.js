@@ -185,7 +185,7 @@ function Notebook() {
                                         <div className='notecontent1'>{note?.content}</div>
 
                                     </li>
-                                    <button onClick={(e) => deleteSubmit(e, note.id)}>Delete</button>
+                                    <button onClick={(e) => deleteSubmit(e, note.id)} className='deleteNoteBtn'>Delete</button>
                                 </ul>
                             )
                         } else {
