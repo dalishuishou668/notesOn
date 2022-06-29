@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getUserNotebooks, editNotebook } from '../../store/notebooks';
+import { getUserNotebooks, editNotebook, deleteNotebook } from '../../store/notebooks';
 import { createNote, deleteNote, getNotebookNotes, editSingleNote } from '../../store/notes';
 import './Notebook.css';
 
@@ -15,12 +15,9 @@ function Notebook() {
     // State
     const userId = useSelector(state => state.session.user?.id);
     const notebook = useSelector((state) => state?.notebooks[notebookId]);
-    console.log('********notbook bug in component:', notebook)
 
     const notes = useSelector((state) => state.notes)
     const notesArr = Object.values(notes)
-    console.log("notesArr --------------------", notesArr)
-
 
     // Display and Edit notebook notes
     const [title, setTitle] = useState('');
@@ -30,7 +27,7 @@ function Notebook() {
     const [realNoteTitle, setRealNoteTitle] = useState('');
     const [realNoteContent, setRealNoteContent] = useState('');
 
-    // const [inputView, setInputView] = useState(false);
+   
     const updateTitle = (e) => setTitle(e.target.value);
 
     // Edit A Notebook
@@ -43,7 +40,7 @@ function Notebook() {
         dispatch(editNotebook(payload, notebookId, notebook))
         dispatch(getUserNotebooks(userId))
         setTitle('')
-        // history.push('/home')
+        history.push(`/notebooks/${notebookId}`);
     }
 
     // Create a new note
@@ -59,11 +56,11 @@ function Notebook() {
         await dispatch(createNote(payload))
         setNoteTitle('')
         setContent('')
-        // history.push(`/notebooks/${notebookId}`);
+        history.push(`/notebooks/${notebookId}`);
     }
 
 
-    // DELETE a note  ====== not working
+    // DELETE a note
     const deleteSubmit = async (e, noteId) => {
         e.preventDefault();
 
@@ -77,7 +74,6 @@ function Notebook() {
     // EDIT a note
     const editSubmit = async (e, noteId) => {
         e.preventDefault();
-        // console.log('editSubmit:', noteId)
 
         const payload = {
             title: realNoteTitle,
@@ -88,9 +84,20 @@ function Notebook() {
         setRealNote('')
         setRealNoteTitle('')
         setRealNoteContent('')
-        // history.push(`/notebooks/${notebookId}`)
+        history.push(`/notebooks/${notebookId}`)
 
     }
+
+    // DELETE A SINGLE NOTEBOOK
+    const deleteNotebookSubmit = async (e) => {
+
+        console.log('hello')
+        e.preventDefault();
+
+        await dispatch(deleteNotebook(notebookId, userId))
+        history.push('/home')
+    }
+
 
 
     // Read all notes from a single notebook
@@ -99,9 +106,10 @@ function Notebook() {
         dispatch(getUserNotebooks(userId))
         dispatch(getNotebookNotes(notebookId))
 
-    }, [dispatch, notebookId])
+    }, [dispatch, notebookId, userId])
 
 
+    //----------------------------------------------------------------
     // ERROR HANDLING for edit notebook title
     const [errors1, setErrors1] = useState([]);
 
@@ -144,6 +152,12 @@ function Notebook() {
             <h2>Take notes anywhere, any time in any device !</h2>
             <div>
                 <h3>Your Notebook: {notebook?.title}</h3>
+                <button
+                    className='deleteNotebookBtn'
+                    onClick={deleteNotebookSubmit}
+                >
+                    DELETE NOTEBOOK
+                </button>
                 <div className='editNotebookContainer'>
                     <form onSubmit={handleSubmit} className='editForm'>
                         <div>
@@ -209,32 +223,13 @@ function Notebook() {
                                         <div></div>
                                         {note.content}
                                     </li>
-                                    {/* <button onClick={() => deleteSubmit(note.id)}>Delete</button> */}
                                 </ul>
                             )
                         }
-
-                        // return (
-                        //     <div>
-                        //         <div
-                        //             key={note.id}
-                        //             onClick={() => {
-                        //                 setInputView(true);
-                        //                 setRealNoteTitle(note.title);
-                        //                 setRealNoteContent(note.content)
-                        //             }}
-                        //         >
-                        //             {note.title}
-                        //             <div></div>
-                        //             {note.content}
-                        //         </div>
-                        //         <button onSubmit={deleteSubmit}>Delete</button>
-                        //     </div>
-                        // )
                     })}
                 </div>
 
-                {/* {inputView && ( */}
+
                 <div className='realNotesContainer'>
                     <form className='realNotesDisplayForm'>
                         <div>

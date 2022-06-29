@@ -158,9 +158,9 @@ const notesReducer = (state = initialState, action) => {
                 ...state, [action.payload.id]: action.payload
             }
             return newState;
-        case GET_SINGLE_NOTE: //////////////////
+        case GET_SINGLE_NOTE:
             return { ...state, note: action.payload }
-        case EDIT_NOTE: // ????????????????????
+        case EDIT_NOTE:
             return { ...state, [action.payload.id]: action.payload }
         case LOAD_NOTEBOOK_NOTES:
             // const notes = {
@@ -174,7 +174,7 @@ const notesReducer = (state = initialState, action) => {
             return banana;
         case DELETE_NOTE:
             const test = {...state};
-            console.log("reducer:", action.payload);
+            // console.log("reducer:", action.payload);
             delete test[action.payload.id];
             return test;
         default:

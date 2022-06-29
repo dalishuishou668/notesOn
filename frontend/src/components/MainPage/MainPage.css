@@ -13,10 +13,7 @@
     align-items: center; */
 }
 
-/* .inner{
-    border: black 2px solid;
 
-} */
 
 .createNotebookForm {
     font-family: 'Roboto', sans-serif;
@@ -139,7 +136,7 @@ ul {
     display: flex;
     overflow: auto;
     width: 25rem;
-    height: 10rem;
+    height: 12rem;
     border: solid transparent 1px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
     border-radius: 5px;

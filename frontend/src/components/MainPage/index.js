@@ -17,14 +17,12 @@ function MainPage() {
 
     // Get all notebooks
     const notebooks = useSelector(state => state?.notebooks);
-    console.log('notebooks--------:', notebooks)
     const notebooksArray = Object.values(notebooks)
 
     // Get all notes
     const notes = useSelector(state => state.notes)
-    console.log('notes in component:', notes)
     const notesArray = Object.values(notes)
-    console.log('notesArray:', notesArray)
+   
 
     useEffect(() => {
         dispatch(getUserNotebooks(userId));
@@ -108,7 +106,7 @@ function MainPage() {
                                 <NavLink
                                     className='singleNotes'
                                     to={`/notebooks/${note.notebookId}`}
-                                    key={note.id}
+                                    // key={note.id}
                                 >
                                     <div className='notetitle'>
                                         <h3>{note.title}</h3>
