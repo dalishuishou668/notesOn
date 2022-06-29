@@ -1,16 +1,14 @@
-.header-bar{
+.header-bar {
     position: sticky;
     top: 0;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    height: 60px;
-    width: 100%;
-    background-color: rgb(255, 228, 225);
-    background-image: linear-gradient(rgb(255, 250, 240), rgb(255, 228, 225));
+    background-image: linear-gradient( 109.6deg,  rgba(24,138,141,1) 11.2%, rgba(96,221,142,1) 91.1% );
+
+
 }
 
-.header-bar-left{
+.header-bar-left {
     list-style-type: none;
     margin-left: 40px;
     display: flex;
@@ -19,7 +17,7 @@
     margin-right: 40px;
 }
 
-.header-bar-right{
+.header-bar-right {
     list-style-type: none;
     justify-self: flex-end;
     display: flex;

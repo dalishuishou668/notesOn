@@ -101,20 +101,24 @@ function Notebook() {
 
     return (
         <div>
-            <h2>This is SingleNotebook Page</h2>
-            <h3>Your Notebook: {notebook?.title}</h3>
-            <div className='editNotebookContainer'>
-                <form onSubmit={handleSubmit} className='editForm'>
-                    <input
-                        type='text'
-                        placeholder='title'
-                        value={title}
-                        onChange={updateTitle}
-                    >
-                    </input>
-                    <button type='submit'>Edit Notebook</button>
-                </form>
+            <h2>Take notes anywhere, any time & in any device !</h2>
+            <div>
+                <h3>Your Notebook: {notebook?.title}</h3>
+                <div className='editNotebookContainer'>
+                    <form onSubmit={handleSubmit} className='editForm'>
+                        <input
+                            className='editNotebookTitleInput'
+                            type='text'
+                            placeholder='title'
+                            value={title}
+                            onChange={updateTitle}
+                        >
+                        </input>
+                        <button className='editBtn1' type='submit'>Edit Notebook</button>
+                    </form>
+                </div>
             </div>
+
 
 
             <div className='notebookContainer'>
@@ -122,8 +126,8 @@ function Notebook() {
                     {notesArr && notesArr.map(note => {
                         if (realNote.id === note.id) {
                             return (
-                                <div>
-                                    <div
+                                <ul className='container1'>
+                                    <li
                                         className='selected'
                                         id={note.id}
                                         key={note.id}
@@ -133,17 +137,17 @@ function Notebook() {
                                             setRealNoteContent(note.content);
                                         }}
                                     >
-                                        {note?.title}
-                                        <div></div>
-                                        {note?.content}
-                                    </div>
+                                        <div className='notetitle1'>{note?.title}</div>
+                                        <div className='notecontent1'>{note?.content}</div>
+
+                                    </li>
                                     <button onClick={(e) => deleteSubmit(e, note.id)}>Delete</button>
-                                </div>
+                                </ul>
                             )
                         } else {
                             return (
-                                <div>
-                                    <div
+                                <ul>
+                                    <li
                                         className='notSelected'
                                         id={note.id}
                                         key={note.id}
@@ -157,9 +161,9 @@ function Notebook() {
                                         {note.title}
                                         <div></div>
                                         {note.content}
-                                    </div>
+                                    </li>
                                     {/* <button onClick={() => deleteSubmit(note.id)}>Delete</button> */}
-                                </div>
+                                </ul>
                             )
                         }
 
@@ -186,7 +190,7 @@ function Notebook() {
                 {/* {inputView && ( */}
                 <div className='realNotesContainer'>
                     <form className='realNotesDisplayForm'>
-                        <div>
+                        <div className='inputTitle'>
                             <input
                                 className='realNotesTitle'
                                 type='text'
@@ -196,7 +200,7 @@ function Notebook() {
                             >
                             </input>
                         </div>
-                        <div>
+                        <div className='inputContent'>
                             <input
                                 className='realNotsContent'
                                 type='text'
@@ -206,7 +210,7 @@ function Notebook() {
                             >
                             </input>
                         </div>
-                        <button onClick={(e) => editSubmit(e, realNote.id)}>Edit</button>
+                        <button className='editBtn2' onClick={(e) => editSubmit(e, realNote.id)}>Edit</button>
                     </form>
                 </div>
             </div>
@@ -214,6 +218,7 @@ function Notebook() {
             <div className='createNoteFormContainer'>
                 <form onSubmit={onSubmit} className='createNote'>
                     <input
+                        className='createTitleInput'
                         type='text'
                         placeholder='title'
                         value={noteTitle}
@@ -221,13 +226,14 @@ function Notebook() {
                     >
                     </input>
                     <input
+                        className='createContentInput'
                         type='text'
                         placeholder='content'
                         value={content}
                         onChange={(e) => setContent(e.target.value)}
                     >
                     </input>
-                    <button type='submit'>Create New Note</button>
+                    <button className='createNoteBtn' type='submit'>Create New Note</button>
                 </form>
             </div>
         </div>

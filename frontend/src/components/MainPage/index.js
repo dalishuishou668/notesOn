@@ -53,22 +53,26 @@ function MainPage() {
         <div>
             <div className='notebooksAndNotesContainer'>
                 <div className='notebooksContainer'>
-                    <h2>Your Notebooks</h2>
-                    <ul>
-                        {notebooksArray && notebooksArray.map((notebook) => (
-                            <li key={notebook.id} className='singleNotebook'>
-                                <NavLink to={`/notebooks/${notebook.id}`} className='singleNotebook'>
-                                    {notebook.title}
-                                </NavLink>
-                            </li>
-                        ))}
-                    </ul>
+                    <div className='inner'>
+                        <h2>Your Notebooks</h2>
+                        <div className='innerContainer'>
+                            <ul>
+                                {notebooksArray && notebooksArray.map((notebook) => (
+                                    <li key={notebook.id} className='singleNotebook'>
+                                        <NavLink to={`/notebooks/${notebook.id}`} className='singleNotebook'>
+                                            {notebook.title}
+                                        </NavLink>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
                     {/* <MainNotebooks notebooksArray={notebooksArray} /> */}
                     <div className='createNotebookForm'>
                         <form onSubmit={onSubmit} className='createForm'>
                             <div>
                                 <input
-                                    className='inputForm'
+                                    className='createNotebookInput'
                                     type='text'
                                     placeholder="Title"
                                     value={title}
@@ -82,13 +86,17 @@ function MainPage() {
                         </form>
                     </div>
                 </div>
+                <h2>Your Notes</h2>
                 <div className='notesContainer'>
-                    <h2>Your Notes</h2>
                     <ul>
                         {notesArray.map((note) => (
                             <li key={note.id} className='singleNotes'>
-                                Title: {note.title}
-                                Content: {note.content}
+                                <div className='notetitle'>
+                                    <h2>{note.title}</h2>
+                                </div>
+                                <div className='notecontent'>
+                                    <h3>{note.content}</h3>
+                                </div>
                             </li>
                         ))}
                     </ul>

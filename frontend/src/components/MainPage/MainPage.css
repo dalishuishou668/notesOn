@@ -1,30 +1,156 @@
 .notebooksAndNotesContainer {
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
     height: 100%;
 }
 
-.singleNotebook{
-    color: #555b6e;
-    margin: 10px
+.notebooksContainer {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: row;
+    /* border: blue solid 2px; */
+    /* justify-content: center;
+    align-items: center; */
 }
 
-.createBtn{
-    margin-left: 17px;
-    margin-top: 12px;
+/* .inner{
+    border: black 2px solid;
+
+} */
+
+.createNotebookForm {
+    font-family: 'Roboto', sans-serif;
+    /* border: black 2px solid; */
+    margin-top: 10rem;
+    margin-left: 2.5rem;
+}
+
+.createForm {
+    display:flex;
+    flex-direction: column;
+    margin: 2rem;
+}
+
+.createNotebookInput{
+    height: 2.3rem;
+    width: 15rem;
+    margin:2rem;
+    border: solid transparent 1px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
     border-radius: 5px;
 }
 
-.inputForm{
+.createBtn {
+    margin-left: 5rem;
+    margin-top: 0.2rem;
+    background-image: linear-gradient( 83.2deg,  rgba(150,93,233,1) 10.8%, rgba(99,88,238,1) 94.3% );
+    width: 10rem;
+    border: 0;
+    border-radius: .2rem;
+    padding: 13px;
+    color: white;
+    font-size: 14px;
+}
+
+.inputForm {
     border-radius: 5px;
 }
 
-.createForm{
-    /* background-color: #4158D0;
-    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%); */
 
+
+.singleNotes {
+    /* margin: 10px; */
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    height: 12rem;
+    margin: 0.5rem;
+    background-color: white;
+    justify-content: space-evenly;
+    border: solid transparent 1px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
 }
 
-.singleNotes{
-    margin: 10px;
+.notesContainer {
+    display: flex;
+    overflow: auto;
+    width: 50rem;
+    height: 50rem;
+    border: solid transparent 1px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
+    border-radius: 5px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.notesContainer::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+}
+
+.notesContainer::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+.notesContainer::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.192);
+    border-radius: 4px;
+}
+
+.notetitle {
+    width: 17rem;
+    padding: 0.5rem;
+    overflow: hidden;
+}
+
+.notecontent {
+    width: 17rem;
+    height: 100%;
+    word-wrap: break-word;
+    padding: 0.5rem;
+    overflow: hidden;
+}
+
+ul {
+    width: 85%
+}
+
+.innerContainer{
+    display: flex;
+    overflow: auto;
+    width: 25rem;
+    height: 10rem;
+    border: solid transparent 1px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
+    border-radius: 5px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.innerContainer::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+}
+
+.innerContainer::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+.innerContainer::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.192);
+    border-radius: 4px;
+}
+
+.singleNotebook {
+    font-family: 'Roboto', sans-serif;
+    color:black;
+    width: 17rem;
+    padding: 0.5rem;
+    overflow: hidden;
+
 }
