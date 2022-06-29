@@ -27,7 +27,7 @@ function Notebook() {
     const [realNoteTitle, setRealNoteTitle] = useState('');
     const [realNoteContent, setRealNoteContent] = useState('');
 
-   
+
     const updateTitle = (e) => setTitle(e.target.value);
 
     // Edit A Notebook
@@ -150,7 +150,7 @@ function Notebook() {
     return (
         <div>
             <h2>Take notes anywhere, any time in any device !</h2>
-            <div>
+            <div className='container3'>
                 <h3>Your Notebook: {notebook?.title}</h3>
                 <button
                     className='deleteNotebookBtn'
