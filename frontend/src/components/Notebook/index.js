@@ -9,15 +9,13 @@ import './Notebook.css';
 function Notebook() {
 
     const { notebookId } = useParams();
-
-
     const dispatch = useDispatch();
     const history = useHistory();
+
+    // State
     const userId = useSelector(state => state.session.user?.id);
     const notebook = useSelector((state) => state?.notebooks[notebookId]);
-    console.log('notbook bug in component:', notebook)
-    // console.log('component:', notebook.title)
-    // line 88
+    console.log('********notbook bug in component:', notebook)
 
     const notes = useSelector((state) => state.notes)
     const notesArr = Object.values(notes)
