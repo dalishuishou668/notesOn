@@ -110,6 +110,7 @@ h3{
     height: 18rem;
     margin: 8px;
     width: 38rem;
+    word-break: break-all;
 }
 
 .editBtn2{

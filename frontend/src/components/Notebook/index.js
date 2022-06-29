@@ -108,6 +108,7 @@ function Notebook() {
     useEffect(() => {
         const errors1 = [];
         if (title.length < 1) errors1.push('Please provide valid notebook title');
+        if (title.length > 25) errors1.push('Character limit reached');
         setErrors1(errors1);
     }, [title])
 
@@ -117,6 +118,7 @@ function Notebook() {
     useEffect(() => {
         const errors2 = [];
         if (realNoteTitle.length < 1) errors2.push('Please provide valid values');
+        if (realNoteTitle.length > 25) errors2.push('Character limit reached');
         if (realNoteContent.length < 1) errors2.push('Please provide valid values');
         setErrors2(errors2);
     }, [realNoteTitle, realNoteContent])
@@ -127,6 +129,7 @@ function Notebook() {
     useEffect(() => {
         const errors3 = [];
         if (noteTitle.length < 1) errors3.push('Please provide valid note title');
+        if (noteTitle.length > 25) errors3.push('Character limit reached');
         if (content.length < 1) errors3.push('Please provide valid note content');
         setErrors3(errors3);
     }, [noteTitle, content])
@@ -158,7 +161,7 @@ function Notebook() {
                             onChange={updateTitle}
                         >
                         </input>
-                        <button className='editBtn1' type='submit'>Edit Notebook</button>
+                        <button className='editBtn1' type='submit' disabled={!!errors1.length}>Edit Notebook</button>
                     </form>
                 </div>
             </div>
@@ -261,7 +264,12 @@ function Notebook() {
                             >
                             </input>
                         </div>
-                        <button className='editBtn2' onClick={(e) => editSubmit(e, realNote.id)}>Edit</button>
+                        <button className='editBtn2'
+                            onClick={(e) => editSubmit(e, realNote.id)}
+                            disabled={!!errors2.length}
+                        >
+                            Edit
+                        </button>
                     </form>
                 </div>
             </div>
@@ -291,7 +299,7 @@ function Notebook() {
                         onChange={(e) => setContent(e.target.value)}
                     >
                     </input>
-                    <button className='createNoteBtn' type='submit'>Create New Note</button>
+                    <button className='createNoteBtn' type='submit' disabled={!!errors3.length}>Create New Note</button>
                 </form>
             </div>
         </div>

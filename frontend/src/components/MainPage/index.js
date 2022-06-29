@@ -40,6 +40,7 @@ function MainPage() {
     useEffect(() => {
         const errors = [];
         if (title.length < 1) errors.push('Please provide valid values');
+        if (title.length > 25) errors.push('Character limit reached');
         setErrors(errors);
     }, [title])
 
@@ -94,7 +95,7 @@ function MainPage() {
                                 </input>
                             </div>
                             <div>
-                                <button className='createBtn' type='submit'>Create a Notebook</button>
+                                <button className='createBtn' type='submit' disabled={!!errors.length}>Create a Notebook</button>
                             </div>
                         </form>
                     </div>
@@ -103,13 +104,20 @@ function MainPage() {
                 <div className='notesContainer'>
                     <ul>
                         {notesArray.map((note) => (
-                            <li key={note.id} className='singleNotes'>
-                                <div className='notetitle'>
-                                    <h2>{note.title}</h2>
-                                </div>
-                                <div className='notecontent'>
-                                    <h3>{note.content}</h3>
-                                </div>
+                            <li key={note.id}>
+                                <NavLink
+                                    className='singleNotes'
+                                    to={`/notebooks/${note.notebookId}`}
+                                    key={note.id}
+                                >
+                                    <div className='notetitle'>
+                                        <h3>{note.title}</h3>
+                                    </div>
+                                    <div className='notecontent'>
+                                        <p>{note.content}</p>
+                                    </div>
+
+                                </NavLink>
                             </li>
                         ))}
                     </ul>
