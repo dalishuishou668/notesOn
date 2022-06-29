@@ -72,7 +72,7 @@ function MainPage() {
                         <form onSubmit={onSubmit} className='createForm'>
                             <div>
                                 <input
-                                    className='inputForm'
+                                    className='createNotebookInput'
                                     type='text'
                                     placeholder="Title"
                                     value={title}
@@ -92,10 +92,10 @@ function MainPage() {
                         {notesArray.map((note) => (
                             <li key={note.id} className='singleNotes'>
                                 <div className='notetitle'>
-                                    <h2>Title: {note.title}</h2>
+                                    <h2>{note.title}</h2>
                                 </div>
                                 <div className='notecontent'>
-                                    <h3>Content: {note.content}</h3>
+                                    <h3>{note.content}</h3>
                                 </div>
                             </li>
                         ))}

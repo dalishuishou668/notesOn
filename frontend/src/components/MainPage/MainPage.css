@@ -8,34 +8,59 @@
     font-family: 'Roboto', sans-serif;
     display: flex;
     flex-direction: row;
+    border: blue solid 2px;
     /* justify-content: center;
     align-items: center; */
 }
 
+.inner{
+    border: black 2px solid;
+
+}
+
 .createNotebookForm {
     font-family: 'Roboto', sans-serif;
-    margin-top: 80px;
-    margin-left: 100px;
+    border: black 2px solid;
+    margin-top: 5rem;
+    margin-left: 2.5rem;
+}
+
+.createForm {
+    display:flex;
+    flex-direction: column;
+    margin: 2rem;
+}
+
+.createNotebookInput{
+    height: 2.3rem;
+    width: 15rem;
+    margin:10px;
+    border: solid transparent 1px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
+    border-radius: 5px;
 }
 
 .createBtn {
-    margin-left: 17px;
-    margin-top: 12px;
-    border-radius: 5px;
+    margin-left: 3.5rem;
+    background-image: linear-gradient( 83.2deg,  rgba(150,93,233,1) 10.8%, rgba(99,88,238,1) 94.3% );
+    width: 10rem;
+    border: 0;
+    border-radius: .2rem;
+    padding: 13px;
+    color: white;
+    font-size: 14px;
 }
 
 .inputForm {
     border-radius: 5px;
 }
 
-.createForm {
-    /* background-color: #4158D0;
-    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%); */
 
-}
 
 .singleNotes {
     /* margin: 10px; */
+    font-family: 'Roboto', sans-serif;
+    color: black;
     display: flex;
     flex-direction: column;
     height: 12rem;
@@ -121,7 +146,10 @@ ul {
 }
 
 .singleNotebook {
+    font-family: 'Roboto', sans-serif;
+    color:black;
     width: 17rem;
     padding: 0.5rem;
     overflow: hidden;
+
 }
