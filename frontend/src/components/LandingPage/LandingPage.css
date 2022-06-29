@@ -26,13 +26,20 @@
 } */
 
 h1{
-    font-size: 65px;
-    padding: 38px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 50px;
+    padding: 36px;
 }
 
 .subtitle {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-size: 30px;
+    padding:20px
+}
+
+.subtitle2{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 15px;
     padding:20px
 }
 
@@ -66,10 +73,17 @@ h1{
 .landingText{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-content: center;
     margin-left: 30px;
     padding: 25px
 }
 
 p{
     font-family: 'Roboto', sans-serif;
+
 }
+
+/* h3 {
+
+} */

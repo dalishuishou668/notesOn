@@ -1,0 +1,78 @@
+/* body {
+    background-image: linear-gradient( 92.7deg,  rgba(245,212,212,1) 8.5%, rgba(252,251,224,1) 90.2% );
+} */
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    border-radius: 20px;
+    border: solid transparent 1px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
+    background-image: linear-gradient( 92.7deg,  rgba(245,212,212,1) 8.5%, rgba(252,251,224,1) 90.2% );
+}
+
+.login-page {
+    display: flex;
+    position: relative;
+    margin: 0 auto;
+    bottom: 10rem;
+    color: white;
+    margin-top: 18rem;
+    flex-flow: column;
+    background-color: transparent;
+    width: 30rem;
+    padding-left: 9.9rem;
+}
+
+.loginTitle{
+    /* border: black 2px solid; */
+    margin-top: 5rem;
+    color: black;
+    font-size: x-large;
+}
+
+.inputLogin {
+    outline: 0;
+    background: #f2f2f2;
+    width: 20rem;
+    border: 0;
+    /* margin: 0 0 15px; */
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    margin-top: 20px;
+    margin-left: 20px;
+    border-radius: .2rem;
+}
+
+.loginFormButton {
+    background-image: radial-gradient( circle 732px at 96.2% 89.9%,  rgba(70,66,159,1) 0%, rgba(187,43,107,1) 92% );
+    width: 22.8rem;
+    border: 0;
+    border-radius: .2rem;
+    padding: 13px;
+    color: white;
+    font-size: 14px;
+    margin-top: 1rem;
+    margin-left: 20px;
+
+}
+
+.login-form input {
+    /* outline: 0; */
+    background: #f2f2f2;
+    width: 75%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    margin-top: 15px;
+    border-radius: .2rem;
+}
+
+.login-form {
+    margin-left: 2rem;;
+}

@@ -14,8 +14,9 @@ function LandingPage() {
         <div>
             <Navigation />
             <div className='landingPageContainer'>
-                <h1>Simplify your life !!!</h1>
-                <div className='subtitle'>Schedule your tasks and manage everything in one place.</div>
+                <h1>Save your thoughts wherever you are.</h1>
+                <div className='subtitle'>Simplify your life. </div>
+                <div className='subtitle2'>Schedule your tasks and organize everything in one place.</div>
                 <button className='signupBtn'>SIGN UP</button>
                 <NavLink to='/login' className='link'> Already have an account? Log in.</NavLink>
                 <div className='imgContainer'>
