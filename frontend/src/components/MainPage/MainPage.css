@@ -8,20 +8,20 @@
     font-family: 'Roboto', sans-serif;
     display: flex;
     flex-direction: row;
-    border: blue solid 2px;
+    /* border: blue solid 2px; */
     /* justify-content: center;
     align-items: center; */
 }
 
-.inner{
+/* .inner{
     border: black 2px solid;
 
-}
+} */
 
 .createNotebookForm {
     font-family: 'Roboto', sans-serif;
-    border: black 2px solid;
-    margin-top: 5rem;
+    /* border: black 2px solid; */
+    margin-top: 10rem;
     margin-left: 2.5rem;
 }
 
@@ -34,14 +34,15 @@
 .createNotebookInput{
     height: 2.3rem;
     width: 15rem;
-    margin:10px;
+    margin:2rem;
     border: solid transparent 1px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
     border-radius: 5px;
 }
 
 .createBtn {
-    margin-left: 3.5rem;
+    margin-left: 5rem;
+    margin-top: 0.2rem;
     background-image: linear-gradient( 83.2deg,  rgba(150,93,233,1) 10.8%, rgba(99,88,238,1) 94.3% );
     width: 10rem;
     border: 0;

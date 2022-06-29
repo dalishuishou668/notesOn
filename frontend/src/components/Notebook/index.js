@@ -101,7 +101,7 @@ function Notebook() {
 
     return (
         <div>
-            <h2>Take notes now</h2>
+            <h2>Take notes anywhere, any time & in any device !</h2>
             <div>
                 <h3>Your Notebook: {notebook?.title}</h3>
                 <div className='editNotebookContainer'>
