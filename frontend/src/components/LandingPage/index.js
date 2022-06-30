@@ -29,12 +29,13 @@ function LandingPage() {
                 <div className='imgContainer'>
                     <img className="img" src={img} alt="loading..." />
                     <div className='landingText'>
-                        <h3>WORK ANYWHERE !</h3>
-                        <p>Keep important notes handy.</p>
-                        <h3>REMEMBER EVERYTHING !</h3>
-                        <p>Make notes more useful.</p>
-                        <h3>EASY TO USE !</h3>
-                        <p>Get what you need when you needed.</p>
+                        <h4>WORK ANYWHERE !</h4>
+                        <p>All your work in one place. Keep important notes handy.</p>
+                        <h4>REMEMBER EVERYTHING !</h4>
+                        <p>Capture what's on your mind. Make notes more useful.</p>
+                        <h4>EASY TO USE !</h4>
+                        <p>Quickly search for note. Get what you need when you needed.</p>
+                        <h3></h3>
                     </div>
                 </div>
             </div>
