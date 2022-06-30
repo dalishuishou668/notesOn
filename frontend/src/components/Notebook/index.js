@@ -27,6 +27,9 @@ function Notebook() {
     const [realNoteTitle, setRealNoteTitle] = useState('');
     const [realNoteContent, setRealNoteContent] = useState('');
 
+    const [show, setShow] = useState(false);
+    const [view, setView] = useState(false);
+
 
     const updateTitle = (e) => setTitle(e.target.value);
 
@@ -196,6 +199,7 @@ function Notebook() {
                                             setRealNote(note);
                                             setRealNoteTitle(note.title);
                                             setRealNoteContent(note.content);
+                                            setView(true)
                                         }}
                                     >
                                         <div className='notetitle1'>{note?.title}</div>
@@ -213,7 +217,7 @@ function Notebook() {
                                         id={note.id}
                                         key={note.id}
                                         onClick={() => {
-                                            // setInputView(true);
+                                            setView(true)
                                             setRealNote(note)
                                             setRealNoteTitle(note.title);
                                             setRealNoteContent(note.content)
@@ -230,7 +234,86 @@ function Notebook() {
                 </div>
 
 
-                <div className='realNotesContainer'>
+                {view ? (
+                    <div>
+                        <div className='realNotesContainer'>
+                            <form className='realNotesDisplayForm'>
+                                <div>
+                                    <ul className="errors">
+                                        {errors2.map(error => (
+                                            <li key={error}>{error}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                                <div className='inputTitle'>
+                                    <input
+                                        className='realNotesTitle'
+                                        type='text'
+                                        placeholder='note title'
+                                        value={realNoteTitle}
+                                        onChange={(e) => setRealNoteTitle(e.target.value)}
+                                    >
+                                    </input>
+                                </div>
+                                <div className='inputContent'>
+                                    <input
+                                        className='realNotsContent'
+                                        type='text'
+                                        placeholder='note content'
+                                        value={realNoteContent}
+                                        onChange={(e) => setRealNoteContent(e.target.value)}
+                                    >
+                                    </input>
+                                </div>
+                                <button className='editBtn2'
+                                    onClick={(e) => editSubmit(e, realNote.id)}
+                                    disabled={!!errors2.length}
+                                >
+                                    Edit
+                                </button>
+                            </form>
+                        </div>
+
+                    </div>
+                ) : (
+                    <>
+                        {/* {show ? (
+                            <></>
+                        ) : (
+                            <button onClick={() => setShow(true)}>build</button>
+                        )} */}
+                        <div className='createNoteFormContainer'>
+                            <form onSubmit={onSubmit} className='createNote'>
+                                <div>
+                                    <ul className="errors">
+                                        {errors3.map(error => (
+                                            <li key={error}>{error}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                                <input
+                                    className='createTitleInput'
+                                    type='text'
+                                    placeholder=' note title'
+                                    value={noteTitle}
+                                    onChange={(e) => setNoteTitle(e.target.value)}
+                                >
+                                </input>
+                                <input
+                                    className='createContentInput'
+                                    type='text'
+                                    placeholder='content'
+                                    value={content}
+                                    onChange={(e) => setContent(e.target.value)}
+                                >
+                                </input>
+                                <button className='createNoteBtn' type='submit' disabled={!!errors3.length}>Create New Note</button>
+                            </form>
+                        </div>
+                    </>
+                )}
+
+                {/* <div className='realNotesContainer'>
                     <form className='realNotesDisplayForm'>
                         <div>
                             <ul className="errors">
@@ -266,10 +349,50 @@ function Notebook() {
                             Edit
                         </button>
                     </form>
-                </div>
+                </div> */}
             </div>
 
-            <div className='createNoteFormContainer'>
+            <div>
+                <button onClick={() => setShow(true)}>build</button>
+            </div>
+
+            {show ? (
+                <>
+                    <div className='createNoteFormContainer'>
+                        <form onSubmit={onSubmit} className='createNote'>
+                            <div>
+                                <ul className="errors">
+                                    {errors3.map(error => (
+                                        <li key={error}>{error}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <input
+                                className='createTitleInput'
+                                type='text'
+                                placeholder=' note title'
+                                value={noteTitle}
+                                onChange={(e) => setNoteTitle(e.target.value)}
+                            >
+                            </input>
+                            <input
+                                className='createContentInput'
+                                type='text'
+                                placeholder='content'
+                                value={content}
+                                onChange={(e) => setContent(e.target.value)}
+                            >
+                            </input>
+                            <button className='createNoteBtn' type='submit' disabled={!!errors3.length}>Create New Note</button>
+                        </form>
+                    </div>
+
+                </>
+            ) : (
+                <></>
+            )}
+
+            {/* <div className='createNoteFormContainer'>
                 <form onSubmit={onSubmit} className='createNote'>
                     <div>
                         <ul className="errors">
@@ -296,7 +419,10 @@ function Notebook() {
                     </input>
                     <button className='createNoteBtn' type='submit' disabled={!!errors3.length}>Create New Note</button>
                 </form>
-            </div>
+            </div> */}
+
+
+
         </div>
 
     )
