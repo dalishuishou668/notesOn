@@ -1,15 +1,16 @@
 .header-bar {
+
     position: sticky;
     top: 0;
     display: flex;
     justify-content: space-between;
-    background-image: linear-gradient( 109.6deg,  rgba(24,138,141,1) 11.2%, rgba(96,221,142,1) 91.1% );
+    /* background-image: linear-gradient( 109.6deg,  rgba(24,138,141,1) 11.2%, rgba(96,221,142,1) 91.1% ); */
 
 
 }
 
 .header-bar-left {
-    list-style-type: none;
+
     margin-left: 40px;
     display: flex;
     align-items: center;
@@ -23,4 +24,51 @@
     display: flex;
     margin-right: 40px;
     align-items: center;
+}
+
+.icon{
+    list-style-type: none;
+}
+
+.sessionLink{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.iconImg{
+    width:200px;
+    height: 70px;
+}
+
+
+.login {
+    margin-bottom: 8px;
+    margin-right: 10px;
+}
+
+.link1{
+    font-family: 'Roboto', sans-serif;
+    color: black;
+}
+
+.signup {
+    font-family: 'Roboto', sans-serif;
+    color:black;
+    margin-bottom: 8px;
+    margin-right: 10px;
+}
+
+.demo-user-button {
+    height:20px;
+    margin-bottom: 6px;
+    color:white;
+    border: 0;
+    border-radius: .2rem;
+    background-image: linear-gradient( 109.6deg,  rgba(24,138,141,1) 11.2%, rgba(96,221,142,1) 91.1% );
+}
+
+.homeLink{
+    font-family: 'Roboto', sans-serif;
+    color: black;
 }

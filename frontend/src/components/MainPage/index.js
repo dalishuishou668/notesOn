@@ -22,7 +22,7 @@ function MainPage() {
     // Get all notes
     const notes = useSelector(state => state.notes)
     const notesArray = Object.values(notes)
-   
+
 
     useEffect(() => {
         dispatch(getUserNotebooks(userId));
@@ -98,11 +98,11 @@ function MainPage() {
                         </form>
                     </div>
                 </div>
-                <h2>Your Notes</h2>
+                <h2 className='title3'>Your Notes</h2>
                 <div className='notesContainer'>
                     <ul>
                         {notesArray.map((note) => (
-                            <li key={note.id}>
+                            <li className='notelist' key={note.id}>
                                 <NavLink
                                     className='singleNotes'
                                     to={`/notebooks/${note.notebookId}`}

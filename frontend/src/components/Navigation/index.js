@@ -3,6 +3,8 @@ import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import * as sessionActions from '../../store/session';
+import img from '../../images/panda_icon.jpg';
+//import img from '../../images/notesOn-logos_transparent.png';
 import './Navigation.css';
 
 function Navigation({ isLoaded }) {
@@ -18,38 +20,58 @@ function Navigation({ isLoaded }) {
 
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
+      <>
+        <li>
+          <NavLink exact to="/home" className='homeLink'>Home</NavLink>
+        </li>
+        <li>
+          <ProfileButton user={sessionUser} />
+        </li>
+      </>
     );
   } else {
     sessionLinks = (
       <>
-        <li>
-          <NavLink to="/login">Log In</NavLink>
+        {/* <div className='nav1'>
+          <ul> */}
+        <li className='login'>
+          <NavLink to="/login" className='link1'>Log In</NavLink>
         </li>
-        <li>
-          <NavLink to="/signup">Sign Up</NavLink>
+        <li className='signup'>
+          <NavLink to="/signup" className='link1'>Sign Up</NavLink>
         </li>
-        <li>
+        <li className='session'>
           <button className='demo-user-button' onClick={demoLogin}>
             Demo User
           </button>
         </li>
+        {/* </ul>
+        </div> */}
       </>
     );
   }
 
   return (
     <div className='header-bar'>
-      <ul className='header-bar-left'>
-        <li>
-          <NavLink exact to="/home" className='homeLink'>Home</NavLink>
-        </li>
-      </ul>
-      <ul>
-        <li className='header-bar-right'>
-          {isLoaded && sessionLinks}
-        </li>
-      </ul>
+      <div className='header-bar-left'>
+        <ul>
+          <li className='icon'>
+            <img className="iconImg" src={img} alt="loading..." />
+          </li>
+        </ul>
+      </div>
+      <div className='header-bar-right'>
+        <div className='nav1'>
+          <ul className='sessionLink'>
+            {isLoaded && sessionLinks}
+          </ul>
+        </div>
+        {/* <ul className='nav1'>
+          <li className='sessionLink'>
+            {isLoaded && sessionLinks}
+          </li>
+        </ul> */}
+      </div>
     </div>
   );
 }

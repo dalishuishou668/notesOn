@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import Navigation from '../Navigation';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import img from '../../images/homepage.jpg';
 import Notebook from '../Notebook';
 import './LandingPage.css'
@@ -9,15 +9,22 @@ function LandingPage() {
 
     // const sessionUser = useSelector(state => state.session.user);
 
+    const history = useHistory();
+
+    const signupSubmit = (e) => {
+        e.preventDefault();
+        history.push('/signup')
+    }
+
 
     return (
         <div>
-            <Navigation />
             <div className='landingPageContainer'>
                 <h1>Save your thoughts wherever you are.</h1>
                 <div className='subtitle'>Simplify your life. </div>
                 <div className='subtitle2'>Schedule your tasks and organize everything in one place.</div>
-                <button className='signupBtn'>SIGN UP</button>
+                {/* <NavLink to='/signup' className='signupBtn'>SIGN UP</NavLink> */}
+                <button className='signupBtn' onClick={signupSubmit}>SIGN UP</button>
                 <NavLink to='/login' className='link'> Already have an account? Log in.</NavLink>
                 <div className='imgContainer'>
                     <img className="img" src={img} alt="loading..." />
