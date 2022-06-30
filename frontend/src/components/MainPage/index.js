@@ -4,7 +4,7 @@ import { useEffect, useState, useContext } from "react";
 import { getUserNotebooks } from "../../store/notebooks";
 import { getUserNotes } from "../../store/notes";
 import { createNewNotebook } from "../../store/notebooks";
-// import MainNotebooks from "./MainNotebooks";
+import Sidenavbar from '../Sidenavbar';
 import './MainPage.css'
 
 
@@ -55,9 +55,11 @@ function MainPage() {
 
 
     return (
-        <div>
+        <div className='outBox'>
+            <Sidenavbar name={sessionUser?.username}/>
             <div className='notebooksAndNotesContainer'>
                 <div className='notebooksContainer'>
+
                     <div className='inner'>
                         <h2>Your Notebooks</h2>
                         <div className='innerContainer'>

@@ -3,6 +3,8 @@ import { NavLink, useHistory, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getUserNotebooks, editNotebook, deleteNotebook } from '../../store/notebooks';
 import { createNote, deleteNote, getNotebookNotes, editSingleNote } from '../../store/notes';
+// import { useSetview } from '../../context/SetviewContext'
+import Sidenavbar from '../Sidenavbar';
 import './Notebook.css';
 
 
@@ -11,8 +13,10 @@ function Notebook() {
     const { notebookId } = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
+    // const { view, setView } = useSetview();
 
     // State
+    const sessionUser = useSelector((state) => state.session.user);
     const userId = useSelector(state => state.session.user?.id);
     const notebook = useSelector((state) => state?.notebooks[notebookId]);
 
@@ -151,132 +155,175 @@ function Notebook() {
     // if (!notesArr.length) return null;
 
     return (
-        <div>
-            <h2>Take notes anywhere, any time in any device !</h2>
-            <div className='container3'>
-                <h3>Your Notebook: {notebook?.title}</h3>
-                <button
-                    className='deleteNotebookBtn'
-                    onClick={deleteNotebookSubmit}
-                >
-                    DELETE NOTEBOOK
-                </button>
-                <div className='editNotebookContainer'>
-                    <form onSubmit={handleSubmit} className='editForm'>
-                        <div>
-                            <ul className="errors">
-                                {errors1.map(error => (
-                                    <li key={error}>{error}</li>
-                                ))}
-                            </ul>
-                        </div>
-                        <input
-                            className='editNotebookTitleInput'
-                            type='text'
-                            placeholder='title'
-                            value={title}
-                            onChange={updateTitle}
-                        >
-                        </input>
-                        <button className='editBtn1' type='submit' disabled={!!errors1.length}>Edit Notebook</button>
-                    </form>
-                </div>
-            </div>
 
+        <div className='outerContainer'>
 
+                <Sidenavbar name={sessionUser?.username}/>
 
-            <div className='notebookContainer'>
-                <div className='allNotesFromSingleNotebookContainer'>
-                    {notesArr && notesArr.map(note => {
-                        if (realNote.id === note.id) {
-                            return (
-                                <ul className='container1'>
-                                    <li
-                                        className='selected'
-                                        id={note.id}
-                                        key={note.id}
-                                        onClick={() => {
-                                            setRealNote(note);
-                                            setRealNoteTitle(note.title);
-                                            setRealNoteContent(note.content);
-                                            setView(true)
-                                        }}
-                                    >
-                                        <div className='notetitle1'>{note?.title}</div>
-                                        <div className='notecontent1'>{note?.content}</div>
-
-                                    </li>
-                                    <button onClick={(e) => deleteSubmit(e, note.id)} className='deleteNoteBtn'>Delete</button>
-                                    {/* <button onClick={() => setView(false)} className='cancelNoteBtn'>Cancel</button> */}
+            <div>
+                <h2>Take notes anywhere, any time in any device !</h2>
+                <div className='container3'>
+                    <h3 className='topTitle'>Your Notebook: {notebook?.title}</h3>
+                    <button
+                        className='deleteNotebookBtn'
+                        onClick={deleteNotebookSubmit}
+                    >
+                        DELETE NOTEBOOK
+                    </button>
+                    <div className='editNotebookContainer'>
+                        <form onSubmit={handleSubmit} className='editForm'>
+                            <div>
+                                <ul className="errors">
+                                    {errors1.map(error => (
+                                        <li key={error}>{error}</li>
+                                    ))}
                                 </ul>
-                            )
-                        } else {
-                            return (
-                                <ul>
-                                    <li
-                                        className='notSelected'
-                                        id={note.id}
-                                        key={note.id}
-                                        onClick={() => {
-                                            setView(true)
-                                            setRealNote(note)
-                                            setRealNoteTitle(note.title);
-                                            setRealNoteContent(note.content)
-                                        }}
-                                    >
-                                        {note.title}
-                                        <div></div>
-                                        {note.content}
-                                    </li>
-                                </ul>
-                            )
-                        }
-                    })}
-                </div>
-
-
-                {view ? (
-                    <div>
-                        <div className='realNotesContainer'>
-                            <form className='realNotesDisplayForm'>
-                                <div>
-                                    <ul className="errors">
-                                        {errors2.map(error => (
-                                            <li key={error}>{error}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-                                <div className='inputTitle'>
-                                    <input
-                                        className='realNotesTitle'
-                                        type='text'
-                                        placeholder='note title'
-                                        value={realNoteTitle}
-                                        onChange={(e) => setRealNoteTitle(e.target.value)}
-                                    >
-                                    </input>
-                                </div>
-                                <div className='inputContent'>
-                                    <input
-                                        className='realNotsContent'
-                                        type='text'
-                                        placeholder='note content'
-                                        value={realNoteContent}
-                                        onChange={(e) => setRealNoteContent(e.target.value)}
-                                    >
-                                    </input>
-                                </div>
-                                <button className='editBtn2'
-                                    onClick={(e) => editSubmit(e, realNote.id)}
-                                    disabled={!!errors2.length}
-                                >
-                                    Edit
-                                </button>
-                            </form>
-                        </div>
-
+                            </div>
+                            <input
+                                className='editNotebookTitleInput'
+                                type='text'
+                                placeholder='title'
+                                value={title}
+                                onChange={updateTitle}
+                            >
+                            </input>
+                            <button className='editBtn1' type='submit' disabled={!!errors1.length}>Edit Notebook</button>
+                        </form>
                     </div>
-                ) : (
+                </div>
+
+
+
+                <div className='notebookContainer'>
+                    <div className='allNotesFromSingleNotebookContainer'>
+                        {notesArr && notesArr.map(note => {
+                            if (realNote.id === note.id) {
+                                return (
+                                    <ul className='container1'>
+                                        <li
+                                            className='selected'
+                                            id={note.id}
+                                            key={note.id}
+                                            onClick={() => {
+                                                setRealNote(note);
+                                                setRealNoteTitle(note.title);
+                                                setRealNoteContent(note.content);
+                                                setView(true)
+                                            }}
+                                        >
+                                            <div className='notetitle1'>{note?.title}</div>
+                                            <div className='notecontent1'>{note?.content}</div>
+
+                                        </li>
+                                        <button onClick={(e) => deleteSubmit(e, note.id)} className='deleteNoteBtn'>Delete</button>
+                                        {/* <button onClick={() => setView(false)} className='cancelNoteBtn'>Cancel</button> */}
+                                    </ul>
+                                )
+                            } else {
+                                return (
+                                    <ul>
+                                        <li
+                                            className='notSelected'
+                                            id={note.id}
+                                            key={note.id}
+                                            onClick={() => {
+                                                setView(true)
+                                                setRealNote(note)
+                                                setRealNoteTitle(note.title);
+                                                setRealNoteContent(note.content)
+                                            }}
+                                        >
+                                            {note.title}
+                                            <div></div>
+                                            {note.content}
+                                        </li>
+                                    </ul>
+                                )
+                            }
+                        })}
+                    </div>
+
+
+                    {view ? (
+                        <div>
+                            <div className='realNotesContainer'>
+                                <form className='realNotesDisplayForm'>
+                                    <div>
+                                        <ul className="errors">
+                                            {errors2.map(error => (
+                                                <li key={error}>{error}</li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                    <div className='inputTitle'>
+                                        <input
+                                            className='realNotesTitle'
+                                            type='text'
+                                            placeholder='note title'
+                                            value={realNoteTitle}
+                                            onChange={(e) => setRealNoteTitle(e.target.value)}
+                                        >
+                                        </input>
+                                    </div>
+                                    <div className='inputContent'>
+                                        <input
+                                            className='realNotsContent'
+                                            type='text'
+                                            placeholder='note content'
+                                            value={realNoteContent}
+                                            onChange={(e) => setRealNoteContent(e.target.value)}
+                                        >
+                                        </input>
+                                    </div>
+                                    <button className='editBtn2'
+                                        onClick={(e) => editSubmit(e, realNote.id)}
+                                        disabled={!!errors2.length}
+                                    >
+                                        Edit
+                                    </button>
+                                </form>
+                            </div>
+
+                        </div>
+                    ) : (
+                        <>
+                            <div className='createNoteFormContainer'>
+                                <form onSubmit={onSubmit} className='createNote'>
+                                    <div>
+                                        <ul className="errors">
+                                            {errors3.map(error => (
+                                                <li key={error}>{error}</li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                    <input
+                                        className='createTitleInput'
+                                        type='text'
+                                        placeholder=' note title'
+                                        value={noteTitle}
+                                        onChange={(e) => setNoteTitle(e.target.value)}
+                                    >
+                                    </input>
+                                    <input
+                                        className='createContentInput'
+                                        type='text'
+                                        placeholder='content'
+                                        value={content}
+                                        onChange={(e) => setContent(e.target.value)}
+                                    >
+                                    </input>
+                                    <button className='createNoteBtn' type='submit' disabled={!!errors3.length}>Create New Note</button>
+                                </form>
+                            </div>
+                        </>
+                    )}
+                </div>
+
+                <div>
+                    <button onClick={() => setView(false)}>build</button>
+                </div>
+
+                {show ? (
                     <>
                         <div className='createNoteFormContainer'>
                             <form onSubmit={onSubmit} className='createNote'>
@@ -306,50 +353,14 @@ function Notebook() {
                                 <button className='createNoteBtn' type='submit' disabled={!!errors3.length}>Create New Note</button>
                             </form>
                         </div>
+
                     </>
+                ) : (
+                    <></>
                 )}
             </div>
-
-            <div>
-                <button onClick={() => setShow(true)}>build</button>
-            </div>
-
-            {show ? (
-                <>
-                    <div className='createNoteFormContainer'>
-                        <form onSubmit={onSubmit} className='createNote'>
-                            <div>
-                                <ul className="errors">
-                                    {errors3.map(error => (
-                                        <li key={error}>{error}</li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <input
-                                className='createTitleInput'
-                                type='text'
-                                placeholder=' note title'
-                                value={noteTitle}
-                                onChange={(e) => setNoteTitle(e.target.value)}
-                            >
-                            </input>
-                            <input
-                                className='createContentInput'
-                                type='text'
-                                placeholder='content'
-                                value={content}
-                                onChange={(e) => setContent(e.target.value)}
-                            >
-                            </input>
-                            <button className='createNoteBtn' type='submit' disabled={!!errors3.length}>Create New Note</button>
-                        </form>
-                    </div>
-
-                </>
-            ) : (
-                <></>
-            )}
         </div>
+
 
     )
 

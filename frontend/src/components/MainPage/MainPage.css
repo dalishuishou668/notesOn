@@ -1,3 +1,8 @@
+.outBox{
+    display:flex;
+    flex-direction: row;
+}
+
 .notebooksAndNotesContainer {
     display: flex;
     flex-direction: column;
@@ -94,7 +99,7 @@
     display: flex;
     overflow: auto;
     width: 50rem;
-    height: 50rem;
+    height: 40rem;
     border: solid transparent 1px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
     border-radius: 5px;
@@ -171,6 +176,10 @@ ul {
     padding: 0.5rem;
     overflow: hidden;
 
+}
+
+.inner{
+    margin-left: 3.6rem;;
 }
 
 .notelist{

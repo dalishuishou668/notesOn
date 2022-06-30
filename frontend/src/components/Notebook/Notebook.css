@@ -2,11 +2,16 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+.outerContainer{
+    display: flex;
+    flex-direction: row;
+}
+
 .allNotesFromSingleNotebookContainer {
     display: flex;
     flex-direction: column;
     overflow: auto;
-    width: 15rem;
+    width: 22rem;
     height: 35rem;
     border: solid transparent 1px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
@@ -39,7 +44,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 7rem;
-    width: 10rem;
+    width: 17rem;
     background-color: white;
     justify-content: space-evenly;
     border: solid transparent 1px;
@@ -53,7 +58,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 7rem;
-    width: 10rem;
+    width: 17rem;
     background-color: white;
     justify-content: space-evenly;
     border: solid transparent 1px;
@@ -113,7 +118,7 @@ h3{
     justify-content: center;
     align-content: center;
     height: 35rem;
-    width: 40rem;
+    width: 50rem;
     margin-left: 30px;
     border: solid transparent 1px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
@@ -121,14 +126,14 @@ h3{
 
 .realNotesTitle {
     height: 5rem;
-    margin: 8px;
-    width: 38rem;
+    margin: 1rem;
+    width: 47rem;
 }
 
 .realNotsContent {
     height: 18rem;
-    margin: 8px;
-    width: 38rem;
+    margin: 1rem;
+    width: 47rem;
     word-break: break-all;
 }
 
@@ -165,11 +170,7 @@ h3{
     width: 15rem
 }
 
-.createNoteFormContainer{
-    border:black 2px solid;
-    /* display: flex;
-    justify-content: center; */
-}
+
 
 
 .createNote{
@@ -181,7 +182,7 @@ h3{
     justify-content: center;
     align-content: center;
     height: 35rem;
-    width: 40rem;
+    width: 50rem;
     margin-left: 30px;
     border: solid transparent 1px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
@@ -197,7 +198,7 @@ h3{
     color: white;
     font-size: 14px; */
     margin-top: 0.6rem;
-    margin-left: 10rem;
+    margin-left: 15rem;
     background-image: linear-gradient( 83.2deg,  rgba(150,93,233,1) 10.8%, rgba(99,88,238,1) 94.3% );
     width: 20rem;
     border: 0;
@@ -212,8 +213,8 @@ h3{
     width: 20rem;
     margin:10px; */
     height: 5rem;
-    margin: 8px;
-    width: 38rem;
+    margin: 1rem;
+    width: 47rem;
 }
 
 .createContentInput{
@@ -221,20 +222,16 @@ h3{
     width: 20rem;
     margin:10px; */
     height: 18rem;
-    margin: 8px;
-    width: 38rem;
+    margin: 1rem;
+    width: 47rem;
+    word-break: break-all;
 
 }
 
-/* .cancelNoteBtn{
-    color:white;
-    background-image: linear-gradient( 83.2deg,  rgba(150,93,233,1) 10.8%, rgba(99,88,238,1) 94.3% );
-    border: 0;
-    border-radius: .2rem;
-    padding: 8px;
-    margin: 5px;
+.topTitle:hover{
+    background-image: linear-gradient(174.2deg, rgba(255, 244, 228, 1) 7.1%, rgba(240, 246, 238, 1) 67.4%);
+}
 
-} */
 
 .deleteNoteBtn{
     color:white;
@@ -244,7 +241,7 @@ h3{
     padding: 8px;
     margin: 5px;
     margin-top: 1rem;;
-    margin-left: 2.5rem;;
+    margin-left: 6.8rem;;
 }
 
 .deleteNotebookBtn{
