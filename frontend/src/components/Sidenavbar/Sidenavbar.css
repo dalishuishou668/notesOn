@@ -6,6 +6,9 @@
 
 
 }
+.navContainer1{
+    margin-top: 5rem
+}
 
 .profile{
     display:flex;
@@ -19,27 +22,22 @@
     margin-right: 25px;
 }
 
-.search{
-    width:17.8rem;
-    border: 0;
-    border-radius: .6rem;
-    padding: 13px;
-    margin-left: .2rem;
+.fa-github, .fa-linkedin{
+    font-size: 30px;
+    color:white
 }
 
-.searchResultContainer{
-    width:17.8rem;
-    border: 0;
-    border-radius: .6rem;
-    padding: 13px;
-    margin-left: .2rem;
+.git{
+    display: flex;
+    flex-direction: column;
 }
 
-.searchResult{
-    color:white;
-    font-family: 'Roboto', sans-serif;
-    font-size: large;
+.github, .linkedIn{
+    margin:20px;
 }
+
+
+
 
 .navCreate{
     width:19.6rem;

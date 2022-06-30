@@ -11,23 +11,26 @@ const Sidenavbar = ({ name, notebooks }) => {
 
     return (
         <div className='navContainer'>
-            <h3></h3>
-            <h4>Welcome!</h4>
-            <div>
+          
+            <div className='navContainer1'>
                 <div className='profile'>
                     <img className="navImg" src={img} alt="loading..." />
-                    <h4>{name}</h4>
+                    <h4>Welcome, {name}</h4>
                 </div>
                 {/* <Search sessionUser={sessionUser} notebooks={notebooks} /> */}
-                <button onClick={() => setView(true)}
-                    className='navCreate'
-                >
-                    Create A Note</button>
-                <p>LinkedIn</p>
-                <a href='https://github.com/dalishuishou668' className='github' >
-                    <i className="fab fa-github-square"></i>
-                    <p>Github</p>
-                </a>
+
+
+                <div className='git'>
+                    <a href='https://github.com/dalishuishou668' className='github' >
+                        <i class="fa-brands fa-github"></i>
+
+                    </a>
+                    <a href='https://www.linkedin.com/in/qiaoyi-joyce-liu-623204241/' className='linkedIn'>
+                        <i class="fa-brands fa-linkedin"></i>
+
+                    </a>
+                </div>
+
             </div>
         </div>
     )

@@ -25,6 +25,9 @@ function Navigation({ isLoaded }) {
           <NavLink exact to="/home" className='homeLink'>Home</NavLink>
         </li>
         <li>
+          <NavLink exact to="/search" className='homeLink'>Search</NavLink>
+        </li>
+        <li>
           <ProfileButton user={sessionUser} />
         </li>
       </>
