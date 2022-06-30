@@ -56,7 +56,7 @@ function MainPage() {
 
     return (
         <div className='outBox'>
-            <Sidenavbar name={sessionUser?.username}/>
+            <Sidenavbar name={sessionUser?.username} notebooks={notebooks}/>
             <div className='notebooksAndNotesContainer'>
                 <div className='notebooksContainer'>
 

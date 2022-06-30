@@ -18,6 +18,8 @@ function Notebook() {
     // State
     const sessionUser = useSelector((state) => state.session.user);
     const userId = useSelector(state => state.session.user?.id);
+    const notebooks = useSelector((state) => state?.notebooks);
+    console.log('prop notebooks:', notebooks)
     const notebook = useSelector((state) => state?.notebooks[notebookId]);
 
     const notes = useSelector((state) => state.notes)
@@ -158,7 +160,9 @@ function Notebook() {
 
         <div className='outerContainer'>
 
-                <Sidenavbar name={sessionUser?.username}/>
+            <Sidenavbar name={sessionUser?.username}
+                notebooks={notebooks}
+            />
 
             <div>
                 <h2>Take notes anywhere, any time in any device !</h2>
