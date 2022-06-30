@@ -207,6 +207,7 @@ function Notebook() {
 
                                     </li>
                                     <button onClick={(e) => deleteSubmit(e, note.id)} className='deleteNoteBtn'>Delete</button>
+                                    {/* <button onClick={() => setView(false)} className='cancelNoteBtn'>Cancel</button> */}
                                 </ul>
                             )
                         } else {
@@ -277,11 +278,6 @@ function Notebook() {
                     </div>
                 ) : (
                     <>
-                        {/* {show ? (
-                            <></>
-                        ) : (
-                            <button onClick={() => setShow(true)}>build</button>
-                        )} */}
                         <div className='createNoteFormContainer'>
                             <form onSubmit={onSubmit} className='createNote'>
                                 <div>
@@ -312,44 +308,6 @@ function Notebook() {
                         </div>
                     </>
                 )}
-
-                {/* <div className='realNotesContainer'>
-                    <form className='realNotesDisplayForm'>
-                        <div>
-                            <ul className="errors">
-                                {errors2.map(error => (
-                                    <li key={error}>{error}</li>
-                                ))}
-                            </ul>
-                        </div>
-                        <div className='inputTitle'>
-                            <input
-                                className='realNotesTitle'
-                                type='text'
-                                placeholder='note title'
-                                value={realNoteTitle}
-                                onChange={(e) => setRealNoteTitle(e.target.value)}
-                            >
-                            </input>
-                        </div>
-                        <div className='inputContent'>
-                            <input
-                                className='realNotsContent'
-                                type='text'
-                                placeholder='note content'
-                                value={realNoteContent}
-                                onChange={(e) => setRealNoteContent(e.target.value)}
-                            >
-                            </input>
-                        </div>
-                        <button className='editBtn2'
-                            onClick={(e) => editSubmit(e, realNote.id)}
-                            disabled={!!errors2.length}
-                        >
-                            Edit
-                        </button>
-                    </form>
-                </div> */}
             </div>
 
             <div>
@@ -391,38 +349,6 @@ function Notebook() {
             ) : (
                 <></>
             )}
-
-            {/* <div className='createNoteFormContainer'>
-                <form onSubmit={onSubmit} className='createNote'>
-                    <div>
-                        <ul className="errors">
-                            {errors3.map(error => (
-                                <li key={error}>{error}</li>
-                            ))}
-                        </ul>
-                    </div>
-                    <input
-                        className='createTitleInput'
-                        type='text'
-                        placeholder=' note title'
-                        value={noteTitle}
-                        onChange={(e) => setNoteTitle(e.target.value)}
-                    >
-                    </input>
-                    <input
-                        className='createContentInput'
-                        type='text'
-                        placeholder='content'
-                        value={content}
-                        onChange={(e) => setContent(e.target.value)}
-                    >
-                    </input>
-                    <button className='createNoteBtn' type='submit' disabled={!!errors3.length}>Create New Note</button>
-                </form>
-            </div> */}
-
-
-
         </div>
 
     )

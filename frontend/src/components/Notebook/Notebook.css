@@ -15,18 +15,18 @@ body {
     border-top-right-radius: 0px;
 }
 
-.notesContainer::-webkit-scrollbar {
+.allNotesFromSingleNotebookContainer::-webkit-scrollbar {
     width: 8px;
     height: 8px;
     border-radius: 4px;
 }
 
-.notesContainer::-webkit-scrollbar-track {
+.allNotesFromSingleNotebookContainer::-webkit-scrollbar-track {
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     border-radius: 4px;
 }
 
-.notesContainer::-webkit-scrollbar-thumb {
+.allNotesFromSingleNotebookContainer::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.192);
     border-radius: 4px;
 }
@@ -58,8 +58,27 @@ body {
     justify-content: space-evenly;
     border: solid transparent 1px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
-    background-image: linear-gradient(174.2deg, rgba(255, 244, 228, 1) 7.1%, rgba(240, 246, 238, 1) 67.4%);
     overflow: scroll;
+}
+
+.selected::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    border-radius: 4px;
+}
+
+.selected::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+.selected::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.192);
+    border-radius: 4px;
+}
+
+.notSelected:hover{
+    background-image: linear-gradient(174.2deg, rgba(255, 244, 228, 1) 7.1%, rgba(240, 246, 238, 1) 67.4%);
 }
 
 .notebookContainer {
@@ -207,12 +226,23 @@ h3{
 
 }
 
+/* .cancelNoteBtn{
+    color:white;
+    background-image: linear-gradient( 83.2deg,  rgba(150,93,233,1) 10.8%, rgba(99,88,238,1) 94.3% );
+    border: 0;
+    border-radius: .2rem;
+    padding: 8px;
+    margin: 5px;
+
+} */
+
 .deleteNoteBtn{
     color:white;
     background-image: linear-gradient( 83.2deg,  rgba(150,93,233,1) 10.8%, rgba(99,88,238,1) 94.3% );
     border: 0;
     border-radius: .2rem;
-    padding: 13px;
+    padding: 8px;
+    margin: 5px;
     margin-top: 1rem;;
     margin-left: 2.5rem;;
 }
