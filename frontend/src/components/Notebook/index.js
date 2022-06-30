@@ -35,6 +35,7 @@ function Notebook() {
 
     const [show, setShow] = useState(false);
     const [view, setView] = useState(false);
+    const [showEdit, setShowedit] = useState(false);
 
 
     const updateTitle = (e) => setTitle(e.target.value);
@@ -168,13 +169,69 @@ function Notebook() {
                 <h2>Take notes anywhere, any time in any device !</h2>
                 <div className='container3'>
                     <h3 className='topTitle'>Your Notebook: {notebook?.title}</h3>
-                    <button
-                        className='deleteNotebookBtn'
-                        onClick={deleteNotebookSubmit}
-                    >
-                        DELETE NOTEBOOK
-                    </button>
-                    <div className='editNotebookContainer'>
+                    <div className='buttonContainer'>
+                        <button
+                            className='deleteNotebookBtn'
+                            onClick={deleteNotebookSubmit}
+                        >
+                            DELETE NOTEBOOK
+                        </button>
+                        <button
+                            className='createNoteButton'
+                            onClick={() => setView(false)}
+                        >
+                            CREATE A NOTE
+                        </button>
+                        <button
+                            className='editBtn5'
+                            onClick={() => setShowedit(true)}
+                        >
+                            Edit Notebook</button>
+                    </div>
+
+
+                    {showEdit ? (
+                        <div className='editNotebookContainer'>
+                            <form onSubmit={handleSubmit} className='editForm'>
+                                <div>
+                                    <ul className="errors">
+                                        {errors1.map(error => (
+                                            <li key={error}>{error}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                                <input
+                                    className='editNotebookTitleInput'
+                                    type='text'
+                                    placeholder='title'
+                                    value={title}
+                                    onChange={updateTitle}
+                                >
+                                </input>
+                                <button className='editBtn1' type='submit' disabled={!!errors1.length}>Update</button>
+                                <button className='editBtn1' onClick={() => setShowedit(false)}>Cancel</button>
+                            </form>
+                        </div>
+                    ) : (
+                        <></>
+                    )}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    {/* <div className='editNotebookContainer'>
                         <form onSubmit={handleSubmit} className='editForm'>
                             <div>
                                 <ul className="errors">
@@ -193,7 +250,7 @@ function Notebook() {
                             </input>
                             <button className='editBtn1' type='submit' disabled={!!errors1.length}>Edit Notebook</button>
                         </form>
-                    </div>
+                    </div> */}
                 </div>
 
 
@@ -316,15 +373,11 @@ function Notebook() {
                                         onChange={(e) => setContent(e.target.value)}
                                     >
                                     </input>
-                                    <button className='createNoteBtn' type='submit' disabled={!!errors3.length}>Create New Note</button>
+                                    <button className='createNoteBtn' type='submit' disabled={!!errors3.length}>SAVE</button>
                                 </form>
                             </div>
                         </>
                     )}
-                </div>
-
-                <div>
-                    <button onClick={() => setView(false)}>build</button>
                 </div>
 
                 {show ? (

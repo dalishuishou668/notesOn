@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import Search from "./search";
+// import Search from "./search";
 import img from '../../images/panda.png';
 import './Sidenavbar.css';
 
@@ -18,7 +18,7 @@ const Sidenavbar = ({ name, notebooks }) => {
                     <img className="navImg" src={img} alt="loading..." />
                     <h4>{name}</h4>
                 </div>
-                <Search sessionUser={sessionUser} notebooks={notebooks} />
+                {/* <Search sessionUser={sessionUser} notebooks={notebooks} /> */}
                 <button onClick={() => setView(true)}
                     className='navCreate'
                 >
