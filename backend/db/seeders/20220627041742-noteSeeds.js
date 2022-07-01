@@ -39,6 +39,22 @@ module.exports = {
         },
         {
           userId: 1,
+          notebookId: 1,
+          title: "Javascript",
+          content: "Javascript is a scripting languages, primarily used on the Web. It is used to enhance HTML pages and is commonly found embedded in HTML code. JavaScript is an interpreted language.",
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          userId: 1,
+          notebookId: 1,
+          title: "React",
+          content: "ReactJS is a free and open-source front-end JavaScript library for building user interfaces based on UI components. ",
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          userId: 1,
           notebookId: 2,
           title: "Note 4",
           content: "Apple",

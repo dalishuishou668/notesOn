@@ -140,9 +140,9 @@ function Notebook() {
 
     useEffect(() => {
         const errors2 = [];
-        if (realNoteTitle.length < 1) errors2.push('Please provide valid values');
+        if (realNoteTitle.length < 1) errors2.push('Please provide valid note title');
         if (realNoteTitle.length > 25) errors2.push('Character limit reached');
-        if (realNoteContent.length < 1) errors2.push('Please provide valid values');
+        if (realNoteContent.length < 1) errors2.push('Please provide valid note content');
         setErrors2(errors2);
     }, [realNoteTitle, realNoteContent])
 
@@ -350,7 +350,11 @@ function Notebook() {
                                         onChange={(e) => setContent(e.target.value)}
                                     >
                                     </textarea>
-                                    <button className='createNoteBtn' type='submit' disabled={!!errors3.length}>SAVE</button>
+                                    <div className='createFormBtnContainer2'>
+                                        <button className='createNoteBtn' type='submit' disabled={!!errors3.length}>Save</button>
+                                        <button className='cancelCreate' onClick={() => setView(false)}>Cancel</button>
+                                    </div>
+
                                 </form>
                             </div>
                         </>

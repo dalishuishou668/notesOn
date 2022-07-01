@@ -51,7 +51,10 @@
 .link1{
     font-family: 'Roboto', sans-serif;
     color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
+
 
 .signup {
     font-family: 'Roboto', sans-serif;
@@ -61,6 +64,7 @@
 }
 
 .demo-user-button {
+    cursor: pointer;
     height:20px;
     margin-bottom: 6px;
     color:white;
@@ -75,6 +79,7 @@
     text-decoration: none;
     font-size: 1.2rem;
     margin: 10px;
+    cursor: pointer;
 }
 
 .homeLink:hover{
