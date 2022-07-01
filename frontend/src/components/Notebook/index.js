@@ -350,7 +350,11 @@ function Notebook() {
                                         onChange={(e) => setContent(e.target.value)}
                                     >
                                     </textarea>
-                                    <button className='createNoteBtn' type='submit' disabled={!!errors3.length}>SAVE</button>
+                                    <div className='createFormBtnContainer2'>
+                                        <button className='createNoteBtn' type='submit' disabled={!!errors3.length}>Save</button>
+                                        <button className='cancelCreate' onClick={() => setView(false)}>Cancel</button>
+                                    </div>
+
                                 </form>
                             </div>
                         </>
