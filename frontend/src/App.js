@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import Notebook from "./components/Notebook";
 import MainPage from './components/MainPage';
+import Search from './components/Search';
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 
@@ -37,6 +38,12 @@ function App() {
           </Route>
           <Route path='/notebooks/:notebookId'>
             <Notebook />
+          </Route>
+          <Route path='/search'>
+            <Search />
+          </Route>
+          <Route>
+            <h2>Page Not Found</h2>
           </Route>
         </Switch>
       )}

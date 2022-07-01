@@ -2,11 +2,34 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+.buttonContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.outerContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.createNoteButton{
+    display: flex;
+    justify-content: center;
+    color:white;
+    background-image: linear-gradient( 83.2deg,  rgba(150,93,233,1) 10.8%, rgba(99,88,238,1) 94.3% );
+    border: 0;
+    border-radius: .2rem;
+    padding: 13px;
+    margin-left: 2.5rem;
+    margin-bottom: 2rem;
+    width: 10rem;
+}
+
 .allNotesFromSingleNotebookContainer {
     display: flex;
     flex-direction: column;
     overflow: auto;
-    width: 15rem;
+    width: 22rem;
     height: 35rem;
     border: solid transparent 1px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
@@ -15,18 +38,18 @@ body {
     border-top-right-radius: 0px;
 }
 
-.notesContainer::-webkit-scrollbar {
+.allNotesFromSingleNotebookContainer::-webkit-scrollbar {
     width: 8px;
     height: 8px;
     border-radius: 4px;
 }
 
-.notesContainer::-webkit-scrollbar-track {
+.allNotesFromSingleNotebookContainer::-webkit-scrollbar-track {
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     border-radius: 4px;
 }
 
-.notesContainer::-webkit-scrollbar-thumb {
+.allNotesFromSingleNotebookContainer::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.192);
     border-radius: 4px;
 }
@@ -39,7 +62,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 7rem;
-    width: 10rem;
+    width: 17rem;
     background-color: white;
     justify-content: space-evenly;
     border: solid transparent 1px;
@@ -53,13 +76,32 @@ body {
     display: flex;
     flex-direction: column;
     height: 7rem;
-    width: 10rem;
+    width: 17rem;
     background-color: white;
     justify-content: space-evenly;
     border: solid transparent 1px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
-    background-image: linear-gradient(174.2deg, rgba(255, 244, 228, 1) 7.1%, rgba(240, 246, 238, 1) 67.4%);
     overflow: scroll;
+}
+
+.selected::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    border-radius: 4px;
+}
+
+.selected::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+.selected::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.192);
+    border-radius: 4px;
+}
+
+.notSelected:hover{
+    background-image: linear-gradient(174.2deg, rgba(255, 244, 228, 1) 7.1%, rgba(240, 246, 238, 1) 67.4%);
 }
 
 .notebookContainer {
@@ -94,7 +136,7 @@ h3{
     justify-content: center;
     align-content: center;
     height: 35rem;
-    width: 40rem;
+    width: 50rem;
     margin-left: 30px;
     border: solid transparent 1px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
@@ -102,20 +144,20 @@ h3{
 
 .realNotesTitle {
     height: 5rem;
-    margin: 8px;
-    width: 38rem;
+    margin: 1rem;
+    width: 47rem;
 }
 
 .realNotsContent {
     height: 18rem;
-    margin: 8px;
-    width: 38rem;
+    margin: 1rem;
+    width: 47rem;
     word-break: break-all;
 }
 
 .editBtn2{
     margin-top: 0.6rem;
-    margin-left: 10rem;
+    margin-left: 15rem;
     background-image: linear-gradient( 83.2deg,  rgba(150,93,233,1) 10.8%, rgba(99,88,238,1) 94.3% );
     width: 20rem;
     border: 0;
@@ -146,22 +188,38 @@ h3{
     width: 15rem
 }
 
-.createNoteFormContainer{
-    /* border:black 2px solid; */
-    display: flex;
-    justify-content: center;
-}
+
 
 
 .createNote{
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-content: center;
+    height: 35rem;
+    width: 50rem;
+    margin-left: 30px;
+    border: solid transparent 1px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
 }
+
 .createNoteBtn{
-    margin-left: 3.5rem;
+    /* margin-left: 3.5rem;
     background-image: linear-gradient( 83.2deg,  rgba(150,93,233,1) 10.8%, rgba(99,88,238,1) 94.3% );
     width: 10rem;
+    border: 0;
+    border-radius: .2rem;
+    padding: 13px;
+    color: white;
+    font-size: 14px; */
+    margin-top: 0.6rem;
+    margin-left: 15rem;
+    margin-bottom: .5rem;
+    background-image: linear-gradient( 83.2deg,  rgba(150,93,233,1) 10.8%, rgba(99,88,238,1) 94.3% );
+    width: 20rem;
     border: 0;
     border-radius: .2rem;
     padding: 13px;
@@ -170,25 +228,52 @@ h3{
 }
 
 .createTitleInput{
-    height: 2.3rem;
+    /* height: 2.3rem;
     width: 20rem;
-    margin:10px;
+    margin:10px; */
+    height: 5rem;
+    margin: 1rem;
+    width: 47rem;
 }
 
 .createContentInput{
-    height: 8rem;
+    /* height: 8rem;
     width: 20rem;
-    margin:10px;
+    margin:10px; */
+    height: 18rem;
+    margin: 1rem;
+    width: 47rem;
+    word-break: break-all;
+
 }
+
+.topTitle:hover{
+    background-image: linear-gradient(174.2deg, rgba(255, 244, 228, 1) 7.1%, rgba(240, 246, 238, 1) 67.4%);
+}
+
 
 .deleteNoteBtn{
     color:white;
     background-image: linear-gradient( 83.2deg,  rgba(150,93,233,1) 10.8%, rgba(99,88,238,1) 94.3% );
     border: 0;
     border-radius: .2rem;
-    padding: 13px;
+    padding: 8px;
+    margin: 5px;
     margin-top: 1rem;;
-    margin-left: 2.5rem;;
+    margin-left: 6.8rem;;
+}
+
+.editBtn5{
+    display: flex;
+    justify-content: center;
+    color:white;
+    background-image: linear-gradient( 83.2deg,  rgba(150,93,233,1) 10.8%, rgba(99,88,238,1) 94.3% );
+    border: 0;
+    border-radius: .2rem;
+    padding: 13px;
+    margin-left: 2.5rem;
+    margin-bottom: 2rem;
+    width: 10rem;
 }
 
 .deleteNotebookBtn{

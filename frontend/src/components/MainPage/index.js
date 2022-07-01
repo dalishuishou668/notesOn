@@ -4,7 +4,7 @@ import { useEffect, useState, useContext } from "react";
 import { getUserNotebooks } from "../../store/notebooks";
 import { getUserNotes } from "../../store/notes";
 import { createNewNotebook } from "../../store/notebooks";
-// import MainNotebooks from "./MainNotebooks";
+import Sidenavbar from '../Sidenavbar';
 import './MainPage.css'
 
 
@@ -22,7 +22,7 @@ function MainPage() {
     // Get all notes
     const notes = useSelector(state => state.notes)
     const notesArray = Object.values(notes)
-   
+
 
     useEffect(() => {
         dispatch(getUserNotebooks(userId));
@@ -53,11 +53,15 @@ function MainPage() {
         setTitle('')
     }
 
+// if(!notesbooksArray || !notesArr) return (<p>loading...</p>)
+
 
     return (
-        <div>
+        <div className='outBox'>
+            <Sidenavbar name={sessionUser?.username} notebooks={notebooks}/>
             <div className='notebooksAndNotesContainer'>
                 <div className='notebooksContainer'>
+
                     <div className='inner'>
                         <h2>Your Notebooks</h2>
                         <div className='innerContainer'>
@@ -98,11 +102,11 @@ function MainPage() {
                         </form>
                     </div>
                 </div>
-                <h2>Your Notes</h2>
+                <h2 className='title3'>Your Notes</h2>
                 <div className='notesContainer'>
                     <ul>
                         {notesArray.map((note) => (
-                            <li key={note.id}>
+                            <li className='notelist' key={note.id}>
                                 <NavLink
                                     className='singleNotes'
                                     to={`/notebooks/${note.notebookId}`}

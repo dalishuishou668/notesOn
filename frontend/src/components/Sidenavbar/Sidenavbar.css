@@ -1,0 +1,67 @@
+.navContainer{
+    width:20rem;
+    color:white;
+    /* background-image: linear-gradient( 94.3deg,  rgba(26,33,64,1) 10.9%, rgba(81,84,115,1) 87.1% ); */
+    background-image: linear-gradient( 110.3deg,  rgba(72,85,99,1) 8.8%, rgba(127,146,166,1) 95.1% );
+
+
+}
+.navContainer1{
+    margin-top: 5rem
+}
+
+.profile{
+    display:flex;
+    flex-direction: row;
+}
+
+.navImg{
+    width:50px;
+    height:50px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.fa-github, .fa-linkedin{
+    font-size: 30px;
+    color:white
+}
+
+.git{
+    display: flex;
+    flex-direction: column;
+}
+
+.github, .linkedIn{
+    margin:20px;
+}
+
+
+
+
+.navCreate{
+    width:19.6rem;
+    color:white;
+    background-image: linear-gradient( 83.2deg,  rgba(150,93,233,1) 10.8%, rgba(99,88,238,1) 94.3% );
+    border: 0;
+    border-radius: .6rem;
+    padding: 13px;
+    margin-left: .2rem;
+}
+
+h4{
+    font-size: larger;
+}
+
+/* .github{
+    color:white;
+    display:flex;
+    flex-direction: row;
+    border: red solid 2px;
+}
+
+.fa-github-square{
+    width:40px;
+    height: 40px;
+
+} */
