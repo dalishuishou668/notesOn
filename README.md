@@ -1,5 +1,5 @@
 # 🐼 notesOn
-notesOn lets you manage your notes in a simple way.
+notesOn is a website clone, inspired by Evernote. It lets you manage your notes in a simple way.
 
 Live site: https://notes-on.herokuapp.com/
 
@@ -97,5 +97,6 @@ To run this project, you will need to add the following environment variables to
 
 ## Appendix
 
+Images credited to Adobe Express and Evernote.
 Icons credited to Font awesome, and flaticon.
 
