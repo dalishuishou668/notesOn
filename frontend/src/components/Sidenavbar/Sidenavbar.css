@@ -32,6 +32,17 @@
     flex-direction: column;
 }
 
+.spin{
+    margin-top: 2rem;;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.text1 {
+    margin-left: 2rem;;
+}
+
 .github, .linkedIn{
     margin:20px;
 }

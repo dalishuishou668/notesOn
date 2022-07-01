@@ -62,7 +62,7 @@ function Notebook() {
             userId,
             notebookId
         }
-        console.log('create notes bug in component:', payload)
+
         await dispatch(createNote(payload))
         setNoteTitle('')
         setContent('')
@@ -101,7 +101,6 @@ function Notebook() {
     // DELETE A SINGLE NOTEBOOK
     const deleteNotebookSubmit = async (e) => {
 
-        console.log('hello')
         e.preventDefault();
 
         await dispatch(deleteNotebook(notebookId, userId))

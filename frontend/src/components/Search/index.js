@@ -6,8 +6,6 @@ import './Search.css';
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
-// import { searchNotes } from '../../store/search';
-// import { getUserNotebooks } from "../../store/notebooks";
 import { getUserNotes } from "../../store/notes";
 import img from '../../images/searchpanda.gif';
 
@@ -26,8 +24,8 @@ function Search() {
 
     const dispatch = useDispatch();
 
-    const [filter, setFilter] = useState([])
-    const [searchWord, setSearchword] = useState('')
+    const [filterNotes, setFilterNotes] = useState([])
+    const [searchKeyword, setSearchkeyword] = useState('')
 
 
     useEffect(() => {
@@ -35,23 +33,19 @@ function Search() {
     }, [dispatch])
 
 
-    const handleSearch = (e) => {
-        const words = e.target.value;
+    const handleUserSearch = (e) => {
+        const inputs = e.target.value;
+        setSearchkeyword(inputs)
 
-
-        setSearchword(words)
-
-        const filterNotes = notesArray?.filter((note) => {
-            const title = note.title.toLowerCase().includes(words.toLowerCase());
+        const filteredNotes = notesArray?.filter((note) => {
+            const title = note.title.toLowerCase().includes(inputs.toLowerCase());
             return title
         })
 
-
-
-        if (words === '') {
-            setFilter([])
+        if (inputs === '') {
+            setFilterNotes([])
         } else {
-            setFilter(filterNotes)
+            setFilterNotes(filteredNotes)
         }
 
     }
@@ -67,25 +61,23 @@ function Search() {
                         <input
                             className="search"
                             placeholder="Search By Title"
-                            value={searchWord}
-                            onChange={handleSearch}
+                            value={searchKeyword}
+                            onChange={handleUserSearch}
                         />
                         {/* <button onClick={handleSearchSubmit}>Submit</button> */}
                     </form>
                 </div>
 
                 <div>
-                    {notesArray && filter.length !== 0 && (
+                    {notesArray && filterNotes.length !== 0 && (
                         <div className='searchResultContainer'>
-                            {filter.map((note) => (
+                            {filterNotes.map((note) => (
                                 <div>
                                     <NavLink
                                         className="searchResult"
                                         to={`/notebooks/${note.notebookId}`}
                                     >
-                                        {note.title.length > 10
-                                            ? note.title.slice(0, 10) + "..."
-                                            : note.title}
+                                        {note.title}
                                     </NavLink>
                                 </div>
                             ))}
