@@ -53,6 +53,8 @@ function MainPage() {
         setTitle('')
     }
 
+// if(!notesbooksArray || !notesArr) return (<p>loading...</p>)
+
 
     return (
         <div className='outBox'>

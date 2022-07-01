@@ -18,11 +18,8 @@ function Search() {
     const sessionUser = useSelector((state) => state.session.user);
     const userId = sessionUser.id
     const notes = useSelector(state => state.notes)
-
-    console.log('^^^^^^^^userId', userId)
-    console.log('notes OBJ:', notes)
     const notesArray = Object.values(notes)
-    console.log('notesArr:', notesArray)
+
 
 
     // // ------------------------------------------------
@@ -60,7 +57,6 @@ function Search() {
     }
 
     return (
-        // <div>hello</div>
         <div>
             <h1></h1>
             <div className='search-bar'>

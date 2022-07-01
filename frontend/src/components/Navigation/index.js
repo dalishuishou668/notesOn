@@ -14,7 +14,8 @@ function Navigation({ isLoaded }) {
   let sessionLinks;
 
   const demoLogin = async () => {
-    return dispatch(sessionActions.login({ credential: "Demo-lition", password: "password" }));
+    await dispatch(sessionActions.login({ credential: "Demo-lition", password: "password" }));
+    history.push('/home')
   }
 
 
