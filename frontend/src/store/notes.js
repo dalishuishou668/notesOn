@@ -59,7 +59,6 @@ export const getUserNotes = (userId) => async (dispatch) => {
 
     if (res.ok) {
         const allnotes = await res.json();
-        console.log('notes in thunk:', allnotes)
         dispatch(loadAllNotes(allnotes))
         return res;
     }
@@ -86,7 +85,6 @@ export const createNote = (note) => async (dispatch) => {
 
     if (res.ok) {
         const note = await res.json();
-        console.log('Create Note Thunk:', note)
         dispatch(addNote(note))
         return note
     }
@@ -136,7 +134,6 @@ export const editSingleNote = (payload, noteId) => async (dispatch) => {
 
     const newNote = await res.json();
 
-    console.log('edit thunk:', newNote)
     dispatch(editNote(newNote))
     return newNote;
 }
@@ -174,7 +171,6 @@ const notesReducer = (state = initialState, action) => {
             return banana;
         case DELETE_NOTE:
             const test = {...state};
-            // console.log("reducer:", action.payload);
             delete test[action.payload.id];
             return test;
         default:

@@ -43,8 +43,6 @@ export const getSingleNotebook = (notebookId) => async (dispatch) => {
     if (res.ok) {
         const notebook = await res.json();
 
-        console.log('=====:', notebook)
-
         dispatch(getNotebook(notebook))
     }
 }
@@ -153,7 +151,7 @@ export const deleteNotebook = (notebookId) => async (dispatch) => {
       method: "DELETE",
     });
 
-    console.log('delete notebook thunk:', res)
+
     if (res.ok) {
       const oldNotebook = await res.json();
       dispatch(removeNotebook(oldNotebook.id));
@@ -199,7 +197,6 @@ const notebooksReducer = (state = initialState, action) => {
             return potato
         case DELETE_NOTEBOOK:
             const test1 = {...state}
-            console.log("@@@@@@@@reducer:", action.payload);
             delete test1[action.payload.id]
             return test1;
         default:

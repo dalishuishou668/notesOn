@@ -53,7 +53,7 @@ function MainPage() {
         setTitle('')
     }
 
-// if(!notesbooksArray || !notesArr) return (<p>loading...</p>)
+
 
 
     return (
@@ -76,7 +76,7 @@ function MainPage() {
                             </ul>
                         </div>
                     </div>
-                    {/* <MainNotebooks notebooksArray={notebooksArray} /> */}
+    
                     <div className='createNotebookForm'>
                         <form onSubmit={onSubmit} className='createForm'>
                             <div>

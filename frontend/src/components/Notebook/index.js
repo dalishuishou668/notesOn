@@ -62,7 +62,7 @@ function Notebook() {
             userId,
             notebookId
         }
-        console.log('create notes bug in component:', payload)
+
         await dispatch(createNote(payload))
         setNoteTitle('')
         setContent('')
@@ -101,7 +101,6 @@ function Notebook() {
     // DELETE A SINGLE NOTEBOOK
     const deleteNotebookSubmit = async (e) => {
 
-        console.log('hello')
         e.preventDefault();
 
         await dispatch(deleteNotebook(notebookId, userId))
@@ -109,6 +108,12 @@ function Notebook() {
     }
 
 
+    // cancel edit note
+    const cancelEditNote = (e) => {
+        e.preventDefault();
+        setView(false);
+        setRealNote('')
+    }
 
     // Read all notes from a single notebook
     useEffect(() => {
@@ -168,7 +173,7 @@ function Notebook() {
             <div>
                 <h2>Take notes anywhere, any time in any device !</h2>
                 <div className='container3'>
-                    <h3 className='topTitle'>Your Notebook: {notebook?.title}</h3>
+                    <h3 className='topTitle'>Your Notebook: <span className='span1'>{notebook?.title}</span></h3>
                     <div className='buttonContainer'>
                         <button
                             className='deleteNotebookBtn'
@@ -186,7 +191,7 @@ function Notebook() {
                             className='editBtn5'
                             onClick={() => setShowedit(true)}
                         >
-                            Edit Notebook</button>
+                            EDIT NOTEBOOK</button>
                     </div>
 
 
@@ -215,42 +220,6 @@ function Notebook() {
                     ) : (
                         <></>
                     )}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    {/* <div className='editNotebookContainer'>
-                        <form onSubmit={handleSubmit} className='editForm'>
-                            <div>
-                                <ul className="errors">
-                                    {errors1.map(error => (
-                                        <li key={error}>{error}</li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <input
-                                className='editNotebookTitleInput'
-                                type='text'
-                                placeholder='title'
-                                value={title}
-                                onChange={updateTitle}
-                            >
-                            </input>
-                            <button className='editBtn1' type='submit' disabled={!!errors1.length}>Edit Notebook</button>
-                        </form>
-                    </div> */}
                 </div>
 
 
@@ -320,28 +289,36 @@ function Notebook() {
                                         <input
                                             className='realNotesTitle'
                                             type='text'
-                                            placeholder='note title'
+                                            placeholder='title'
                                             value={realNoteTitle}
                                             onChange={(e) => setRealNoteTitle(e.target.value)}
                                         >
                                         </input>
                                     </div>
                                     <div className='inputContent'>
-                                        <input
+                                        <textarea
                                             className='realNotsContent'
                                             type='text'
-                                            placeholder='note content'
+                                            placeholder='content'
                                             value={realNoteContent}
                                             onChange={(e) => setRealNoteContent(e.target.value)}
                                         >
-                                        </input>
+                                        </textarea>
                                     </div>
-                                    <button className='editBtn2'
-                                        onClick={(e) => editSubmit(e, realNote.id)}
-                                        disabled={!!errors2.length}
-                                    >
-                                        Edit
-                                    </button>
+                                    <div className='editBtnContainer'>
+                                        <button className='editBtn2'
+                                            onClick={(e) => editSubmit(e, realNote.id)}
+                                            disabled={!!errors2.length}
+                                        >
+                                            Edit
+                                        </button>
+                                        <button
+                                            className='cancelEdit2'
+                                            onClick={cancelEditNote}
+                                        >
+                                            Cancel
+                                        </button>
+                                    </div>
                                 </form>
                             </div>
 
@@ -365,14 +342,14 @@ function Notebook() {
                                         onChange={(e) => setNoteTitle(e.target.value)}
                                     >
                                     </input>
-                                    <input
+                                    <textarea
                                         className='createContentInput'
                                         type='text'
-                                        placeholder='content'
+                                        placeholder='note content'
                                         value={content}
                                         onChange={(e) => setContent(e.target.value)}
                                     >
-                                    </input>
+                                    </textarea>
                                     <button className='createNoteBtn' type='submit' disabled={!!errors3.length}>SAVE</button>
                                 </form>
                             </div>

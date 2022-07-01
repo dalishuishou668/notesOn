@@ -1,26 +1,28 @@
 import { useEffect, useState, useContext } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-// import Search from "./search";
 import img from '../../images/panda.png';
 import './Sidenavbar.css';
 
 const Sidenavbar = ({ name, notebooks }) => {
 
-    const sessionUser = useSelector((state) => state.session.user);
-    const [view, setView] = useState(false)
+    // const sessionUser = useSelector((state) => state.session.user);
+    // const [view, setView] = useState(false)
 
     return (
         <div className='navContainer'>
-          
+
             <div className='navContainer1'>
                 <div className='profile'>
                     <img className="navImg" src={img} alt="loading..." />
                     <h4>Welcome, {name}</h4>
                 </div>
-                {/* <Search sessionUser={sessionUser} notebooks={notebooks} /> */}
 
 
                 <div className='git'>
+                    {/* <div className='spin'>
+                        <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+                        <h4 className='text1'>Take notes now !</h4>
+                    </div> */}
                     <a href='https://github.com/dalishuishou668' className='github' >
                         <i class="fa-brands fa-github"></i>
 
@@ -29,6 +31,7 @@ const Sidenavbar = ({ name, notebooks }) => {
                         <i class="fa-brands fa-linkedin"></i>
 
                     </a>
+
                 </div>
 
             </div>
