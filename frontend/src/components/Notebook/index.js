@@ -109,11 +109,11 @@ function Notebook() {
 
 
     // cancel edit note
-    const cancelEditNote = (e) => {
-        e.preventDefault();
-        setView(false);
-        setRealNote('')
-    }
+    // const cancelEditNote = (e) => {
+    //     e.preventDefault();
+    //     setView(false);
+    //     setRealNote('')
+    // }
 
     // Read all notes from a single notebook
     useEffect(() => {
@@ -312,12 +312,12 @@ function Notebook() {
                                         >
                                             Edit
                                         </button>
-                                        <button
+                                        {/* <button
                                             className='cancelEdit2'
                                             onClick={cancelEditNote}
                                         >
                                             Cancel
-                                        </button>
+                                        </button> */}
                                     </div>
                                 </form>
                             </div>
@@ -352,7 +352,7 @@ function Notebook() {
                                     </textarea>
                                     <div className='createFormBtnContainer2'>
                                         <button className='createNoteBtn' type='submit' disabled={!!errors3.length}>Save</button>
-                                        <button className='cancelCreate' onClick={() => setView(false)}>Cancel</button>
+                                        {/* <button className='cancelCreate' onClick={() => setView(false)}>Cancel</button> */}
                                     </div>
 
                                 </form>

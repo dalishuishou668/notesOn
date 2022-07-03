@@ -12,6 +12,11 @@
     margin-left: 5rem;
 }
 
+.signupErr{
+    color:red;
+    list-style-type: none;
+}
+
 .signupForm{
     display: flex;
     flex-direction: column;
