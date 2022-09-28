@@ -37,8 +37,8 @@ function MainPage() {
 
     useEffect(() => {
         const errors = [];
-        if (title.length < 1) errors.push('Please provide valid values');
-        if (title.length > 25) errors.push('Character limit reached');
+        if (title.length < 1) errors.push('* Please provide valid values');
+        if (title.length > 25) errors.push('* Character limit reached');
         setErrors(errors);
     }, [title])
 
@@ -76,7 +76,7 @@ function MainPage() {
                             </ul>
                         </div>
                     </div>
-    
+
                     <div className='createNotebookForm'>
                         <form onSubmit={onSubmit} className='createForm'>
                             <div>
@@ -115,9 +115,10 @@ function MainPage() {
                                     <div className='notetitle'>
                                         <h3>{note.title}</h3>
                                     </div>
-                                    <div className='notecontent'>
+                                    {/* <div className='notecontent'>
                                         <p>{note.content}</p>
-                                    </div>
+                                    </div> */}
+                                    <div className='notecontent' dangerouslySetInnerHTML={{ __html: `${note.content}` }} />
 
                                 </NavLink>
                             </li>
