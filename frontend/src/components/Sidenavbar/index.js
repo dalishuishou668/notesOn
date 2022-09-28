@@ -13,7 +13,8 @@ const Sidenavbar = ({ name, notebooks }) => {
 
             <div className='navContainer1'>
                 <div className='profile'>
-                    <img className="navImg" src={img} alt="loading..." />
+                    <i class="fa-regular fa-user"></i>
+                    {/* <img className="navImg" src={img} alt="loading..." /> */}
                     <h4>Welcome, {name}</h4>
                 </div>
 
@@ -23,12 +24,12 @@ const Sidenavbar = ({ name, notebooks }) => {
                         <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
                         <h4 className='text1'>Take notes now !</h4>
                     </div> */}
-                    <a href='https://github.com/dalishuishou668' className='github' >
+                    <a href='https://github.com/dalishuishou668' target="_blank" className='github' >
                         <i class="fa-brands fa-github"></i>
                         <div className='navText'>Github</div>
 
                     </a>
-                    <a href='https://www.linkedin.com/in/qiaoyi-joyce-liu-623204241/' className='linkedIn'>
+                    <a href='https://www.linkedin.com/in/qiaoyi-joyce-liu-623204241/' target="_blank" className='linkedIn'>
                         <i class="fa-brands fa-linkedin"></i>
                         <div className='navText'>LinkedIn</div>
 

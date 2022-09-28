@@ -49,13 +49,13 @@ function Notebook() {
     const [newNoteContents, setNewNoteContents] = useState("");
 
 
-    console.log('realnote:', realNote)
-    console.log('realnoteTitle', realNoteTitle)
-    console.log('realnoteContent', realNoteContent)
+    // console.log('realnote:', realNote)
+    // console.log('realnoteTitle', realNoteTitle)
+    // console.log('realnoteContent', realNoteContent)
 
-    console.log('newNote', newNote)
-    console.log('newNotetitle', newNoteTitle)
-    console.log('newNoteContent', newNoteContents)
+    // console.log('newNote', newNote)
+    // console.log('newNotetitle', newNoteTitle)
+    // console.log('newNoteContent', newNoteContents)
 
     function createNewNote() {
         setRealNoteTitle("");
@@ -228,16 +228,16 @@ function Notebook() {
     useEffect(() => { }, [realNote, realNoteContent, realNoteTitle]);
 
 
-    console.log('realnoteContent----->:', realNoteContent)
-    console.log('realNoteTitle----->:', realNoteTitle)
-    console.log('errors2:::', errors2)
+    // console.log('realnoteContent----->:', realNoteContent)
+    // console.log('realNoteTitle----->:', realNoteTitle)
+    // console.log('errors2:::', errors2)
 
 
-    console.log('newNoteContents << ---------:', newNoteContents)
-    console.log('newNoteTitle <<----------:', newNoteTitle)
-    console.log('errors3:::', errors3)
+    // console.log('newNoteContents << ---------:', newNoteContents)
+    // console.log('newNoteTitle <<----------:', newNoteTitle)
+    // console.log('errors3:::', errors3)
 
-    console.log('realNote*********', realNote)
+    // console.log('realNote*********', realNote)
 
 
 
@@ -350,7 +350,7 @@ function Notebook() {
                                                         setNewNote(false);
                                                     }}
                                                 >
-                                                    <div className='notetitle1'>{note?.title}</div>
+                                                    <div className='notetitle5'>{note?.title}</div>
                                                     <div className='notecontent1' dangerouslySetInnerHTML={{ __html: `${note.content}` }} />
                                                     {/* <div className='notecontent1'>{note?.content}</div> */}
                                                 </li>
@@ -373,7 +373,7 @@ function Notebook() {
                                                         setNewNote(false);
                                                     }}
                                                 >
-                                                    {note.title}
+                                                    <div className='noteTitle5'>{note.title}</div>
                                                     <div></div>
                                                     <div className='notecontent1' dangerouslySetInnerHTML={{ __html: `${note.content}` }} />
                                                     {/* {note.content} */}

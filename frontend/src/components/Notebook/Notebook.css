@@ -71,9 +71,33 @@ body {
     justify-content: space-evenly;
     border: solid transparent 1px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
-    overflow: hidden;
     cursor: pointer;
+    /* border: red 2px solid; */
+    overflow: auto;
 }
+
+
+
+/* .notSelected::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+    border-radius: 4px;
+}
+
+.notSelected::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+.notSelected::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.192);
+    border-radius: 4px;
+} */
+
+
+
+
+
 
 .selected {
     font-family: 'Roboto', sans-serif;
@@ -86,12 +110,13 @@ body {
     justify-content: space-evenly;
     border: solid transparent 1px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
-    overflow: scroll;
+    /* overflow: scroll; */
     cursor: pointer;
+    /* border: green 2px solid; */
 }
 
-.selected::-webkit-scrollbar {
-    width: 6px;
+/* .selected::-webkit-scrollbar {
+    width: 5px;
     height: 6px;
     border-radius: 4px;
 }
@@ -104,7 +129,7 @@ body {
 .selected::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.192);
     border-radius: 4px;
-}
+} */
 
 .notSelected:hover{
     background-image: linear-gradient(174.2deg, rgba(255, 244, 228, 1) 7.1%, rgba(240, 246, 238, 1) 67.4%);
@@ -456,4 +481,33 @@ h3{
     height:96%;
     padding:0;
     margin-top: 1px;
+}
+
+
+.notecontent1{
+    /* border: purple 3px solid; */
+    height:72%;
+    overflow: auto;
+    overflow-y: auto;
+    word-wrap: break-word;
+}
+
+.notecontent1::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+    border-radius: 4px;
+}
+
+.notecontent1::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+.notecontent1::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.192);
+    border-radius: 4px;
+}
+
+.noteTitle5{
+    font-weight: bold;
 }
