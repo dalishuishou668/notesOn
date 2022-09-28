@@ -5,6 +5,8 @@ import { getUserNotebooks, editNotebook, deleteNotebook } from '../../store/note
 import { createNote, deleteNote, getNotebookNotes, editSingleNote } from '../../store/notes';
 // import { useSetview } from '../../context/SetviewContext'
 import Sidenavbar from '../Sidenavbar';
+import Editor from "./Editor";
+import "react-quill/dist/quill.snow.css";
 import './Notebook.css';
 
 
@@ -40,6 +42,62 @@ function Notebook() {
 
     const updateTitle = (e) => setTitle(e.target.value);
 
+
+    // RICH EDITOR TEST
+    const [newNote, setNewNote] = useState(true);
+    const [newNoteTitle, setNewNoteTitle] = useState("");
+    const [newNoteContents, setNewNoteContents] = useState("");
+
+
+    console.log('realnote:', realNote)
+    console.log('realnoteTitle', realNoteTitle)
+    console.log('realnoteContent', realNoteContent)
+
+    console.log('newNote', newNote)
+    console.log('newNotetitle', newNoteTitle)
+    console.log('newNoteContent', newNoteContents)
+
+    function createNewNote() {
+        setRealNoteTitle("");
+        setRealNoteContent("");
+        setRealNote("");
+        setNewNoteTitle("");
+        setNewNoteContents("");
+        setNewNote(true);
+    }
+
+    // Handle both create new note and edit old note submit
+    const handleSaveSubmit = async (e, noteId) => {
+        e.preventDefault()
+        if (newNote) {
+            const payload = {
+                title: newNoteTitle,
+                content: newNoteContents,
+                userId,
+                notebookId
+            }
+            console.log('******payload:', payload)
+            await dispatch(createNote(payload))
+            createNewNote()
+            return;
+        }
+
+        const updatePayload = {
+            title: realNoteTitle,
+            content: realNoteContent
+        };
+        await dispatch(editSingleNote(updatePayload, noteId))
+        createNewNote()
+
+    }
+
+
+
+
+
+
+
+
     // Edit A Notebook
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -57,8 +115,8 @@ function Notebook() {
     const onSubmit = async (e) => {
         e.preventDefault();
         const payload = {
-            title: noteTitle,
-            content,
+            title: newNoteTitle,
+            content: newNoteContents,
             userId,
             notebookId
         }
@@ -183,7 +241,7 @@ function Notebook() {
                         </button>
                         <button
                             className='createNoteButton'
-                            onClick={() => setView(false)}
+                            onClick={createNewNote}
                         >
                             CREATE A NOTE
                         </button>
@@ -239,11 +297,12 @@ function Notebook() {
                                                 setRealNoteTitle(note.title);
                                                 setRealNoteContent(note.content);
                                                 setView(true)
+                                                setNewNote(false);
                                             }}
                                         >
                                             <div className='notetitle1'>{note?.title}</div>
-                                            <div className='notecontent1'>{note?.content}</div>
-
+                                            <div className='notecontent1' dangerouslySetInnerHTML={{ __html: `${note.content}` }} />
+                                            {/* <div className='notecontent1'>{note?.content}</div> */}
                                         </li>
                                         <button onClick={(e) => deleteSubmit(e, note.id)} className='deleteNoteBtn'>Delete</button>
                                         {/* <button onClick={() => setView(false)} className='cancelNoteBtn'>Cancel</button> */}
@@ -260,12 +319,14 @@ function Notebook() {
                                                 setView(true)
                                                 setRealNote(note)
                                                 setRealNoteTitle(note.title);
-                                                setRealNoteContent(note.content)
+                                                setRealNoteContent(note.content);
+                                                setNewNote(false);
                                             }}
                                         >
                                             {note.title}
                                             <div></div>
-                                            {note.content}
+                                            <div className='notecontent1' dangerouslySetInnerHTML={{ __html: `${note.content}` }} />
+                                            {/* {note.content} */}
                                         </li>
                                     </ul>
                                 )
@@ -273,8 +334,32 @@ function Notebook() {
                         })}
                     </div>
 
+                    <div className='richEditorContainer'>
+                        <button onClick={(e) => handleSaveSubmit(e, realNote.id)}>Save</button>
+                        <form onSubmit={(e) => handleSaveSubmit(e, realNote.id)}>
+                            <input
+                                type="text"
+                                placeholder="Note Title"
+                                value={realNoteTitle ? realNoteTitle : newNoteTitle}
+                                onChange={
+                                    newNote
+                                        ? (e) => setNewNoteTitle(e.target.value)
+                                        : (e) => setRealNoteTitle(e.target.value)
+                                }
+                            />
+                        </form>
+                        <Editor
+                            newNote={newNote}
+                            realNoteContent={realNoteContent}
+                            newNoteContents={newNoteContents}
+                            setNewNoteContents={setNewNoteContents}
+                            setRealNoteContent={setRealNoteContent}
+                        />
 
-                    {view ? (
+
+                    </div>
+
+                    {/* {view ? (
                         <div>
                             <div className='realNotesContainer'>
                                 <form className='realNotesDisplayForm'>
@@ -312,12 +397,7 @@ function Notebook() {
                                         >
                                             Edit
                                         </button>
-                                        {/* <button
-                                            className='cancelEdit2'
-                                            onClick={cancelEditNote}
-                                        >
-                                            Cancel
-                                        </button> */}
+
                                     </div>
                                 </form>
                             </div>
@@ -352,16 +432,16 @@ function Notebook() {
                                     </textarea>
                                     <div className='createFormBtnContainer2'>
                                         <button className='createNoteBtn' type='submit' disabled={!!errors3.length}>Save</button>
-                                        {/* <button className='cancelCreate' onClick={() => setView(false)}>Cancel</button> */}
+
                                     </div>
 
                                 </form>
                             </div>
                         </>
-                    )}
+                    )} */}
                 </div>
 
-                {show ? (
+                {/* {show ? (
                     <>
                         <div className='createNoteFormContainer'>
                             <form onSubmit={onSubmit} className='createNote'>
@@ -395,7 +475,7 @@ function Notebook() {
                     </>
                 ) : (
                     <></>
-                )}
+                )} */}
             </div>
         </div>
 

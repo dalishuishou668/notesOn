@@ -30,12 +30,13 @@ body {
     flex-direction: column;
     overflow: auto;
     width: 22rem;
-    height: 35rem;
+    height: 39rem;
     border: solid transparent 1px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
     border-radius: 5px;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
+    border:green 2px solid;
 }
 
 .allNotesFromSingleNotebookContainer::-webkit-scrollbar {
@@ -376,4 +377,16 @@ h3{
     padding: 13px;
     color: white;
     font-size: 14px;
+}
+
+.richEditorContainer{
+    border:red 2px solid;
+}
+
+.quillBox{
+    border: blue 3px solid;
+}
+
+.ql-editor .ql-blank{
+    border: yellow 2px solid;
 }
