@@ -1,5 +1,6 @@
 .navContainer{
-    width:15%;
+    border: black 2px solid;
+    min-width:17.1rem;;
     color:white;
     /* background-image: linear-gradient( 94.3deg,  rgba(26,33,64,1) 10.9%, rgba(81,84,115,1) 87.1% ); */
     background-image: linear-gradient( 110.3deg,  rgba(72,85,99,1) 8.8%, rgba(127,146,166,1) 95.1% );
@@ -45,6 +46,9 @@
 
 .github, .linkedIn{
     margin:20px;
+    display:flex;
+    flex-direction: row;
+    text-decoration: none;
 }
 
 
@@ -76,3 +80,12 @@ h4{
     height: 40px;
 
 } */
+
+.navText{
+    text-decoration: none;
+    color:white;
+    margin-top: 6px;
+    margin-left: 15px;
+    font-weight: bold;
+    font-size:18px;
+}

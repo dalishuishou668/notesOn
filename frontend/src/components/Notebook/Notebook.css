@@ -10,6 +10,8 @@ body {
 .outerContainer{
     display: flex;
     flex-direction: row;
+    border: red solid 2px;
+    height: 100vh;
 }
 
 .createNoteButton{

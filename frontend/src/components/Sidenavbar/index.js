@@ -25,10 +25,12 @@ const Sidenavbar = ({ name, notebooks }) => {
                     </div> */}
                     <a href='https://github.com/dalishuishou668' className='github' >
                         <i class="fa-brands fa-github"></i>
+                        <div className='navText'>Github</div>
 
                     </a>
                     <a href='https://www.linkedin.com/in/qiaoyi-joyce-liu-623204241/' className='linkedIn'>
                         <i class="fa-brands fa-linkedin"></i>
+                        <div className='navText'>LinkedIn</div>
 
                     </a>
 
