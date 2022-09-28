@@ -37,8 +37,8 @@ function MainPage() {
 
     useEffect(() => {
         const errors = [];
-        if (title.length < 1) errors.push('Please provide valid values');
-        if (title.length > 25) errors.push('Character limit reached');
+        if (title.length < 1) errors.push('* Please provide valid values');
+        if (title.length > 25) errors.push('* Character limit reached');
         setErrors(errors);
     }, [title])
 
@@ -65,7 +65,7 @@ function MainPage() {
                     <div className='inner'>
                         <h2>Your Notebooks</h2>
                         <div className='innerContainer'>
-                            <ul>
+                            <ul className='notebookUl'>
                                 {notebooksArray && notebooksArray.map((notebook) => (
                                     <li key={notebook.id} className='singleNotebook'>
                                         <NavLink to={`/notebooks/${notebook.id}`} className='singleNotebook'>
@@ -76,7 +76,7 @@ function MainPage() {
                             </ul>
                         </div>
                     </div>
-    
+
                     <div className='createNotebookForm'>
                         <form onSubmit={onSubmit} className='createForm'>
                             <div>
@@ -104,7 +104,7 @@ function MainPage() {
                 </div>
                 <h2 className='title3'>Your Notes</h2>
                 <div className='notesContainer'>
-                    <ul>
+                    <ul className='inNotesContainer'>
                         {notesArray.map((note) => (
                             <li className='notelist' key={note.id}>
                                 <NavLink
@@ -115,9 +115,10 @@ function MainPage() {
                                     <div className='notetitle'>
                                         <h3>{note.title}</h3>
                                     </div>
-                                    <div className='notecontent'>
+                                    {/* <div className='notecontent'>
                                         <p>{note.content}</p>
-                                    </div>
+                                    </div> */}
+                                    <div className='notecontent' dangerouslySetInnerHTML={{ __html: `${note.content}` }} />
 
                                 </NavLink>
                             </li>

@@ -60,7 +60,7 @@ function Search() {
                     <form className='form2'>
                         <input
                             className="search"
-                            placeholder="Search By Title"
+                            placeholder="Search your note by title"
                             value={searchKeyword}
                             onChange={handleUserSearch}
                         />
