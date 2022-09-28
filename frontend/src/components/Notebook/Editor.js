@@ -9,14 +9,14 @@ function Editor({
     setRealNoteContent,
 }) {
 
-    console.log('in the rich text editor------------------------------')
-    console.log(' newNote:', newNote)
-    console.log('realnoteContent2:', realNoteContent)
-    console.log('setRealNoteContent:', setRealNoteContent)
+    // console.log('in the rich text editor------------------------------')
+    // console.log(' newNote:', newNote)
+    // console.log('realnoteContent2:', realNoteContent)
+    // console.log('setRealNoteContent:', setRealNoteContent)
 
-    console.log('newNote2:', newNote)
-    console.log('newNoteContents:', newNoteContents)
-    console.log('setNewNoteContents:', setNewNoteContents)
+    // console.log('newNote2:', newNote)
+    // console.log('newNoteContents:', newNoteContents)
+    // console.log('setNewNoteContents:', setNewNoteContents)
 
 
 

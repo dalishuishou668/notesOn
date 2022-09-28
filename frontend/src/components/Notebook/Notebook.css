@@ -28,17 +28,18 @@ body {
 }
 
 .allNotesFromSingleNotebookContainer {
+    /* margin-top:4.6rem; */
     display: flex;
     flex-direction: column;
     overflow: auto;
     width: 22rem;
-    height: 39rem;
+    height: 85%;
     border: solid transparent 1px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
     border-radius: 5px;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
-    border:green 2px solid;
+    /* border:green 2px solid; */
 }
 
 .allNotesFromSingleNotebookContainer::-webkit-scrollbar {
@@ -114,7 +115,10 @@ body {
     flex-direction: row;
     justify-content: center;
     /* align-items: center; */
-    padding: 50px;
+    margin-top: 5px;
+    height:90%;
+    width:99.8%;
+    /* border: black 3px solid; */
 }
 
 h2{
@@ -209,8 +213,11 @@ h3{
 }
 
 .errors{
+    /* border:purple 3px solid; */
     color:red;
     list-style-type: none;
+    width:80%;
+    text-align: center;
 
 }
 
@@ -382,13 +389,66 @@ h3{
 }
 
 .richEditorContainer{
-    border:red 2px solid;
+    /* border:red 2px solid; */
+    height:83.9%;
+    width:70%;
+    margin-left: 5px;;
 }
 
 .quillBox{
-    border: blue 3px solid;
+    /* border: blue 3px solid; */
 }
 
-.ql-editor .ql-blank{
-    border: yellow 2px solid;
+
+.container5{
+    /* border: yellow 2px solid; */
+    height:80%;
+    width:90%
+
+}
+
+.container4{
+    /* border: blue 3px solid; */
+    width:80%;
+    display:flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.noteTitle_1{
+    /* border: pink 3px solid; */
+    width: 90%;
+    height:2.5rem;
+}
+
+.editorForm{
+    /* border:#3813C2 3px solid; */
+    display:flex;
+    flex-direction: row;
+}
+
+.saveBtn{
+    margin-left: 10px;;
+    margin-top:7px;
+    padding:10px;
+    height:2rem;
+    border: 0;
+    border-radius: .2rem;
+    color:white;
+    background-image: linear-gradient( 83.2deg,  rgba(150,93,233,1) 10.8%, rgba(99,88,238,1) 94.3% );
+}
+
+.errContainer{
+    /* border: black 2px solid; */
+}
+
+.NotesPageContainer{
+    /* border: orangered 5px solid; */
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height:96%;
+    padding:0;
+    margin-top: 1px;
 }
