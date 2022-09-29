@@ -42,6 +42,9 @@ Documentation: https://github.com/dalishuishou668/notesOn/wiki/
 ### 4. Search
 * Users can quickly search their notes and access search results. 
 
+### 5. Rich Text Editor
+* Users can use rich-text toolbar for editing and formatting their notes.
+
 ## Landing Page
 ![4ed3e4067517b732280ccb686473cfa](https://user-images.githubusercontent.com/92266749/176960207-28818a6f-0694-43a4-a34a-e2437d526d2a.png)
 
@@ -49,10 +52,10 @@ Documentation: https://github.com/dalishuishou668/notesOn/wiki/
 ![e2e7fcd3c50f70e431d4e39256c0471](https://user-images.githubusercontent.com/92266749/176960518-35d19e78-ffa1-42c7-9062-f353642bf7cb.png)
 
 ## Main Page
-![3ceeddc79062aeb397bd68294d01032](https://user-images.githubusercontent.com/92266749/176960284-a340410e-5fba-4a4b-b4c3-29d0169ba940.png)
+<img width="1109" alt="2885b1976ea322c6a516971fd9ac968" src="https://user-images.githubusercontent.com/92266749/192930081-c6b62ef3-ef6e-4083-9a94-ac19fd5d5266.png">
 
 ## Notebook Page
-![9cd2b6f8dcdae2df35bc8e611bed376](https://user-images.githubusercontent.com/92266749/176960572-9912949b-16fc-4c50-af2f-f6cd3633e300.png)
+<img width="1109" alt="af9f2f6fe5a8181799873014f4ce619" src="https://user-images.githubusercontent.com/92266749/192930110-4b243063-151f-4dd7-b5a9-48e51bd79498.png">
 
 ## Search Page
 ![a24417354f6c4e6406f90a47258fa09](https://user-images.githubusercontent.com/92266749/176960657-6aaf84cb-25c0-4910-91b1-0c6b0dcbe39d.png)
