@@ -84,7 +84,7 @@
     text-decoration: none;
     cursor: pointer;
     /* border:yellow 2px solid; */
-    width:90%;
+    width:96.5%;
 }
 
 .singleNotes:hover{
@@ -251,7 +251,7 @@ ul {
 .notelist{
     list-style-type: none;
     /* border:red 2px solid; */
-    width:90%;
+    width:98%;
 
 }
 
@@ -262,7 +262,7 @@ ul {
 
 .inNotesContainer{
     /* border:black 5px solid; */
-    width:90%;
+    width:93%;
     /* height:100%; */
     /* display:flex;
     flex-direction: column;
