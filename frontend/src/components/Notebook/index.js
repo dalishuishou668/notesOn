@@ -21,7 +21,7 @@ function Notebook() {
     const sessionUser = useSelector((state) => state.session.user);
     const userId = useSelector(state => state.session.user?.id);
     const notebooks = useSelector((state) => state?.notebooks);
-    console.log('prop notebooks:', notebooks)
+    // console.log('prop notebooks:', notebooks)
     const notebook = useSelector((state) => state?.notebooks[notebookId]);
 
     const notes = useSelector((state) => state.notes)
@@ -76,7 +76,7 @@ function Notebook() {
                 userId,
                 notebookId
             }
-            console.log('******payload:', payload)
+            // console.log('******payload:', payload)
             await dispatch(createNote(payload))
             createNewNote()
             return;
@@ -493,42 +493,6 @@ function Notebook() {
                         </>
                     )} */}
                     </div>
-
-                    {/* {show ? (
-                    <>
-                        <div className='createNoteFormContainer'>
-                            <form onSubmit={onSubmit} className='createNote'>
-                                <div>
-                                    <ul className="errors">
-                                        {errors3.map(error => (
-                                            <li key={error}>{error}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-                                <input
-                                    className='createTitleInput'
-                                    type='text'
-                                    placeholder=' note title'
-                                    value={noteTitle}
-                                    onChange={(e) => setNoteTitle(e.target.value)}
-                                >
-                                </input>
-                                <input
-                                    className='createContentInput'
-                                    type='text'
-                                    placeholder='content'
-                                    value={content}
-                                    onChange={(e) => setContent(e.target.value)}
-                                >
-                                </input>
-                                <button className='createNoteBtn' type='submit' disabled={!!errors3.length}>Create New Note</button>
-                            </form>
-                        </div>
-
-                    </>
-                ) : (
-                    <></>
-                )} */}
                 </div>
             </div>
 
