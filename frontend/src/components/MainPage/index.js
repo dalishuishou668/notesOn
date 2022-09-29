@@ -67,7 +67,7 @@ function MainPage() {
                         <div className='innerContainer'>
                             <ul className='notebookUl'>
                                 {notebooksArray && notebooksArray.map((notebook) => (
-                                    <li key={notebook.id} className='singleNotebook'>
+                                    <li key={notebook.id} className='singleNotebook1'>
                                         <NavLink to={`/notebooks/${notebook.id}`} className='singleNotebook'>
                                             {notebook.title}
                                         </NavLink>

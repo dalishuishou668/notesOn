@@ -490,6 +490,7 @@ h3{
     overflow: auto;
     overflow-y: auto;
     word-wrap: break-word;
+    font-size: 15px;
 }
 
 .notecontent1::-webkit-scrollbar {
@@ -510,4 +511,5 @@ h3{
 
 .noteTitle5{
     font-weight: bold;
+    font-size: 18px;
 }
